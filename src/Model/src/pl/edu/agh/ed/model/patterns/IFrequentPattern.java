@@ -20,4 +20,8 @@ public interface IFrequentPattern {
 	default double getNormalizedSupport() {
 		return getSupport() / getTransactionSet().size();
 	}
+
+	default int size() {
+		return getItems().size();
+	}
 }
