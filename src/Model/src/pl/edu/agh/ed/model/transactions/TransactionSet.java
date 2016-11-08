@@ -1,5 +1,6 @@
 package pl.edu.agh.ed.model.transactions;
 
+import java.util.Collections;
 import java.util.Set;
 
 public class TransactionSet implements ITransactionSet {
@@ -12,6 +13,6 @@ public class TransactionSet implements ITransactionSet {
 
 	@Override
 	public Set<ITransaction> getTransactions() {
-		return transactions;
+		return Collections.unmodifiableSet(transactions);
 	}
 }

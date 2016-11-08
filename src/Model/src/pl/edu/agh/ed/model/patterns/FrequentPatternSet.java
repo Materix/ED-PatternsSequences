@@ -1,5 +1,6 @@
 package pl.edu.agh.ed.model.patterns;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +27,6 @@ public class FrequentPatternSet implements IFrequentPatternSet {
 
 	@Override
 	public Set<IFrequentPattern> getFrequentPatterns() {
-		return frequentPatterns;
+		return Collections.unmodifiableSet(frequentPatterns);
 	}
 }

@@ -1,5 +1,6 @@
 package pl.edu.agh.ed.model.associationRules;
 
+import java.util.Collections;
 import java.util.Set;
 
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
@@ -21,6 +22,6 @@ public class AssociationRuleSet implements IAssociationRuleSet {
 
 	@Override
 	public Set<IAssociationRule> getAssociationRules() {
-		return associationRules;
+		return Collections.unmodifiableSet(associationRules);
 	}
 }
