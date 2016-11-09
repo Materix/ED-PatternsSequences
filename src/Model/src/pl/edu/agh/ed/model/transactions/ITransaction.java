@@ -1,13 +1,14 @@
 package pl.edu.agh.ed.model.transactions;
 
-import java.util.Set;
+import java.util.Collection;
+import java.util.List;
 
 import pl.edu.agh.ed.model.IItem;
 
 public interface ITransaction {
 	int getId(); 
 	
-	Set<IItem> getItems();
+	List<IItem> getItems();
 	
-	boolean contains(Set<IItem> items);
+	boolean contains(Collection<IItem> items);
 }

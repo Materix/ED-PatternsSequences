@@ -1,5 +1,6 @@
 package pl.edu.agh.ed.model.associationRules;
 
+import java.util.Collections;
 import java.util.Set;
 
 import pl.edu.agh.ed.model.IItem;
@@ -26,12 +27,12 @@ public class AssociationRule implements IAssociationRule {
 
 	@Override
 	public Set<IItem> getAntecedent() {
-		return antecedent;
+		return Collections.unmodifiableSet(antecedent);
 	}
 
 	@Override
 	public Set<IItem> getConsequent() {
-		return consequent;
+		return Collections.unmodifiableSet(consequent);
 	}
 
 }

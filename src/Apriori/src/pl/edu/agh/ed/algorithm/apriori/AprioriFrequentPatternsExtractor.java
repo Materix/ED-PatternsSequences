@@ -34,7 +34,7 @@ public class AprioriFrequentPatternsExtractor implements IFrequentPatternsExtrac
     private Set<IFrequentPattern> gen1ItemPatterns(ITransactionSet transactionSet, int minSupport) {
     	return transactionSet.stream()
         	.map(ITransaction::getItems)
-        	.flatMap(Set::stream)
+        	.flatMap(List::stream)
         	.distinct()
         	.map(item -> new FrequentPattern(transactionSet, Collections.singleton(item)))
         	.filter(pattern -> pattern.getSupport() >= minSupport)

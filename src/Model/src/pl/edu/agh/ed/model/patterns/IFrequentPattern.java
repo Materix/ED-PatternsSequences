@@ -10,12 +10,7 @@ public interface IFrequentPattern {
 	
 	Set<IItem> getItems();
 	
-	default long getSupport() {
-		Set<IItem> items = getItems();
-		return getTransactionSet().stream()
-			.filter(transaction -> transaction.contains(items))
-			.count();
-	}
+	long getSupport();
 	
 	default double getNormalizedSupport() {
 		return getSupport() / getTransactionSet().size();

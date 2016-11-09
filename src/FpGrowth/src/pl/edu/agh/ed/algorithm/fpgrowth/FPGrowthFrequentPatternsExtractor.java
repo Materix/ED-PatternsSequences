@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.OptionalLong;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -43,19 +44,20 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 		}
 		
 		return new FrequentPatternSet(transactionSet, fpgrowth(tree, new HashSet<>(), 0, itemSupport, minSupport)
+				.entrySet()
 				.stream()
-				.map(items -> new FrequentPattern(transactionSet, items))
+				.map(entry -> new FrequentPattern(transactionSet, entry.getKey(), entry.getValue()))
 				.collect(Collectors.toSet()));
 	}
 
 	private Map<IItem, Long> calculateSupportForSingleItem(ITransactionSet transactionSet) {
-		return transactionSet.stream().map(ITransaction::getItems).flatMap(Set::stream)
+		return transactionSet.stream().map(ITransaction::getItems).flatMap(List::stream)
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 	}
 
-	private Set<Set<IItem>> fpgrowth(FPTree tree, Set<IItem> prefix, long prefixSupport, 
-			Map<IItem, Long> mapSupport, int minSupport) {
-		Set<Set<IItem>> result = new HashSet<>();
+	private Map<Set<IItem>, Long> fpgrowth(FPTree tree, Set<IItem> prefix, long prefixSupport, 
+			Map<IItem, Long> mapSupport, long minSupport) {
+		Map<Set<IItem>, Long> result = new HashMap<>();
 		if (tree.getRoot().getChildren().size() == 1) {
 			Set<FPTreeNode> singlePath = new HashSet<>();
 			FPTreeNode currentNode = tree.getRoot().getChildren().iterator().next();
@@ -64,7 +66,7 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 				currentNode = currentNode.getChildren().iterator().next();
 			}
 			if (currentNode.getChildren().size() == 0) {
-				return generateAllCombinationsForSinglePath(singlePath, prefix);
+				return generateAllCombinationsForSinglePath(singlePath, prefix, prefixSupport, minSupport, mapSupport);
 			}						
 		} else {
 			SortedMap<IItem, FPTreeNode> headerMap = new TreeMap<>(Comparator.comparingLong(mapSupport::get).reversed());
@@ -75,7 +77,9 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 				Set<IItem> beta = new HashSet<>(prefix);
 				beta.add(item);
 				long betaSupport = (prefixSupport < itemSupport) ? prefixSupport : itemSupport;
-				result.add(new HashSet<>(beta));
+				if (betaSupport >= minSupport) {
+					result.put(new HashSet<>(beta), betaSupport);
+				}
 				
 				Set<List<FPTreeNode>> prefixPaths = new HashSet<>();
 				FPTreeNode path = tree.getHeaders().get(item);
@@ -106,22 +110,23 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 				}
 				
 				FPTree treeBeta = new FPTree(prefixPaths, mapSupportBeta, minSupport);
-				result.addAll(fpgrowth(treeBeta, beta, betaSupport, mapSupportBeta, minSupport));
+				result.putAll(fpgrowth(treeBeta, beta, betaSupport, mapSupportBeta, minSupport));
 			}
 		}
 		return result;
 	}
 
-	private Set<Set<IItem>> generateAllCombinationsForSinglePath(Set<FPTreeNode> singlePath, Set<IItem> prefix) {
-		Set<Set<IItem>> powerset = new HashSet<>();
+	private Map<Set<IItem>, Long> generateAllCombinationsForSinglePath(Set<FPTreeNode> singlePath, Set<IItem> prefix, 
+			long prefixSupport, long minSupport, Map<IItem, Long> mapSupport) {
+		Set<Set<FPTreeNode>> powerset = new HashSet<>();
 		powerset.add(new HashSet<>());
 
 	    for (FPTreeNode node : singlePath) {
-	    	Set<Set<IItem>> temp = new HashSet<>();
+	    	Set<Set<FPTreeNode>> temp = new HashSet<>();
 
-	        for (Set<IItem> innerSet : powerset) {
+	        for (Set<FPTreeNode> innerSet : powerset) {
 	            innerSet = new HashSet<>(innerSet);
-	            innerSet.add(node.getItem());
+	            innerSet.add(node);
 	            temp.add(innerSet);
 	        }
 	        powerset.addAll(temp);
@@ -129,7 +134,17 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 	    
 	    return powerset.stream()
 	    		.filter(set -> set.size() > 0)
-	    		.map(set -> {set.addAll(prefix); return set; })
-	    		.collect(Collectors.toSet());
+	    		.collect(Collectors.toMap(set -> {
+	    			Set<IItem> newSet = new HashSet<>(prefix);
+	    			newSet.addAll(set.stream().map(FPTreeNode::getItem).collect(Collectors.toList()));
+	    			return newSet;
+	    		}, set -> {
+	    			long setSupport = set.stream().map(FPTreeNode::getItem).mapToLong(mapSupport::get).min().orElse(0);
+	    			return (prefixSupport < setSupport) ? prefixSupport : setSupport;
+	    		}))
+	    		.entrySet()
+	    		.stream()
+	    		.filter(entry -> entry.getValue() >= minSupport)
+	    		.collect(Collectors.toMap(Entry::getKey, Entry::getValue));
 	}
 }

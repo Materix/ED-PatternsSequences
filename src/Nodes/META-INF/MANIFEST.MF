@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Apriori-Node extension for KNIME Workbench
+Bundle-SymbolicName: pl.edu.agh.ed.nodes;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: apriori.jar
+Bundle-Activator: pl.edu.agh.ed.nodes.frequentPatterns.apriori.AprioriNodePlugin
+Bundle-Vendor: 
+Require-Bundle: org.eclipse.core.runtime,
+ org.knime.workbench.core,
+ org.knime.workbench.repository,
+ org.knime.base
+Bundle-ActivationPolicy: lazy
+Export-Package: pl.edu.agh.ed.nodes.frequentPatterns.apriori
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+

@@ -1,5 +1,6 @@
 package pl.edu.agh.ed.model.patterns;
 
+import java.util.Collections;
 import java.util.Set;
 
 import pl.edu.agh.ed.model.IItem;
@@ -11,9 +12,18 @@ public class FrequentPattern implements IFrequentPattern {
 	
 	private final Set<IItem> items;
 	
+	private final long support;
+	
 	public FrequentPattern(ITransactionSet transactionSet, Set<IItem> items) {
+		this(transactionSet, items, transactionSet.stream()
+			.filter(transaction -> transaction.contains(items))
+			.count());
+	}
+	
+	public FrequentPattern(ITransactionSet transactionSet, Set<IItem> items, long support) {
 		this.transactionSet = transactionSet;
 		this.items = items;
+		this.support = support;
 	}
 
 	@Override
@@ -23,7 +33,12 @@ public class FrequentPattern implements IFrequentPattern {
 
 	@Override
 	public Set<IItem> getItems() {
-		return items;
+		return Collections.unmodifiableSet(items);
+	}
+
+	@Override
+	public long getSupport() {
+		return support;
 	}
 
 }

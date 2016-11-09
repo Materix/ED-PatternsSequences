@@ -22,7 +22,8 @@ public class FPTree {
 		root = new FPTreeNode();
 	}
 	
-	public FPTree(Set<List<FPTreeNode>> prefixPaths, Map<IItem, Long> mapSupportBeta, int minSupport) {
+	// TODO check this
+	public FPTree(Set<List<FPTreeNode>> prefixPaths, Map<IItem, Long> mapSupportBeta, long minSupport) {
 		this();
 		for (List<FPTreeNode> prefixPath : prefixPaths) {
 			FPTreeNode currentNode = root;
