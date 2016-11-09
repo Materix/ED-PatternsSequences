@@ -61,6 +61,12 @@ public class AprioriNodeModel extends NodeModel {
                     AprioriNodeModel.DEFAULT_COUNT,
                     0, Integer.MAX_VALUE);
     
+    private static final DataTableSpec OUTPUT_DATA_TABLE_SPEC = new DataTableSpec(
+    		new DataColumnSpecCreator("Pattern", StringCell.TYPE).createSpec(),
+    		new DataColumnSpecCreator("Support", LongCell.TYPE).createSpec(),
+    		new DataColumnSpecCreator("Normalized support", DoubleCell.TYPE).createSpec()
+		);
+    
     protected AprioriNodeModel() {
         super(1, 1);
     }
@@ -81,8 +87,8 @@ public class AprioriNodeModel extends NodeModel {
     	IFrequentPatternSet patterns = extractor.extract(transactionSet, SUPPORT_SETTINGS.getIntValue());
     	TableFrequentPatternSetWriter writer = new TableFrequentPatternSetWriter();
 
-    	exec.
-        return new BufferedDataTable[]{writer.write(patterns)};
+    	BufferedDataContainer dataTable = exec.createDataContainer(OUTPUT_DATA_TABLE_SPEC);
+        return new BufferedDataTable[]{writer.write(patterns, dataTable)};
     }
 
     /**
@@ -108,11 +114,7 @@ public class AprioriNodeModel extends NodeModel {
     		throw new InvalidSettingsException("Missing string value column");
     	};
 
-        return new DataTableSpec[]{new DataTableSpec(
-        		new DataColumnSpecCreator("Pattern", StringCell.TYPE).createSpec(),
-        		new DataColumnSpecCreator("Support", LongCell.TYPE).createSpec(),
-        		new DataColumnSpecCreator("Normalized support", DoubleCell.TYPE).createSpec()
-    		)};
+        return new DataTableSpec[]{OUTPUT_DATA_TABLE_SPEC};
     }
 
     /**
