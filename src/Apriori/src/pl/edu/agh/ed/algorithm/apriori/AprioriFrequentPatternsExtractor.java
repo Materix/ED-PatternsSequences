@@ -36,7 +36,7 @@ public class AprioriFrequentPatternsExtractor implements IFrequentPatternsExtrac
         	.map(ITransaction::getItems)
         	.flatMap(List::stream)
         	.distinct()
-        	.map(item -> new FrequentPattern(transactionSet, Collections.singleton(item)))
+        	.map(item -> new FrequentPattern(transactionSet, Collections.singletonList(item)))
         	.filter(pattern -> pattern.getSupport() >= minSupport)
         	.collect(Collectors.toSet());
     }
@@ -61,9 +61,22 @@ public class AprioriFrequentPatternsExtractor implements IFrequentPatternsExtrac
     }
     
     public FrequentPattern mergePatterns(IFrequentPattern firstPattern, IFrequentPattern secondPattern) {
-    	Set<IItem> newItemSet = new HashSet<>(firstPattern.getItems());
-    	newItemSet.addAll(secondPattern.getItems());
-        return new FrequentPattern(firstPattern.getTransactionSet(), newItemSet);
+    	List<IItem> temp = new ArrayList<>(secondPattern.getItems());
+    	List<IItem> intersection = new ArrayList<>();
+    	for (IItem item: firstPattern.getItems()) {
+    		if (temp.contains(item)) {
+    			temp.remove(item);
+    			intersection.add(item);
+    		}
+    	}
+    	
+    	List<IItem> first = new ArrayList<>(firstPattern.getItems());
+    	List<IItem> second = new ArrayList<>(secondPattern.getItems());
+    	first.removeAll(intersection);
+    	second.removeAll(intersection);
+    	intersection.add(first.get(0));
+    	intersection.add(second.get(0));
+        return new FrequentPattern(firstPattern.getTransactionSet(), intersection);
     }
     
     private boolean canCombine(IFrequentPattern p, IFrequentPattern q) {
@@ -71,13 +84,19 @@ public class AprioriFrequentPatternsExtractor implements IFrequentPatternsExtrac
     }
 
     private boolean checkEqualsWithoutOneElement(IFrequentPattern firstPattern, IFrequentPattern secondPattern) {
-    	Set<IItem> intersection = new HashSet<>(firstPattern.getItems());
-    	intersection.retainAll(secondPattern.getItems());
+    	List<IItem> temp = new ArrayList<>(secondPattern.getItems());
+    	List<IItem> intersection = new ArrayList<>();
+    	for (IItem item: firstPattern.getItems()) {
+    		if (temp.contains(item)) {
+    			temp.remove(item);
+    			intersection.add(item);
+    		}
+    	}
     	
-    	Set<IItem> first = new HashSet<>(firstPattern.getItems());
-    	Set<IItem> second = new HashSet<>(secondPattern.getItems());
+    	List<IItem> first = new ArrayList<>(firstPattern.getItems());
+    	List<IItem> second = new ArrayList<>(secondPattern.getItems());
     	first.removeAll(intersection);
     	second.removeAll(intersection);
-        return first.size() == 1 && second.size() == 1;
+        return first.size() == 1 && second.size() == 1 && !first.get(0).equals(second.get(0));
     }
 }

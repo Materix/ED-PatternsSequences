@@ -1,6 +1,7 @@
 package pl.edu.agh.ed.model.associationRules;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import pl.edu.agh.ed.model.IItem;
@@ -9,9 +10,9 @@ import pl.edu.agh.ed.model.transactions.ITransactionSet;
 public interface IAssociationRule {
 	ITransactionSet getTransactionSet();
 	
-	Set<IItem> getAntecedent();
+	List<IItem> getAntecedent();
 	
-	Set<IItem> getConsequent();
+	List<IItem> getConsequent();
 	
 	default long getSupport() {
 		Set<IItem> items = new HashSet<>(getAntecedent());
@@ -22,14 +23,14 @@ public interface IAssociationRule {
 	}
 	
 	default long getAntecedentSupport() {
-		Set<IItem> items = getAntecedent();
+		List<IItem> items = getAntecedent();
 		return getTransactionSet().stream()
 			.filter(transaction -> transaction.contains(items))
 			.count();
 	}
 	
 	default long getConsequentSupport() {
-		Set<IItem> items = getAntecedent();
+		List<IItem> items = getAntecedent();
 		return getTransactionSet().stream()
 			.filter(transaction -> transaction.contains(items))
 			.count();

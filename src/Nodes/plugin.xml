@@ -18,8 +18,7 @@
          point="org.knime.workbench.repository.nodes">
       <node
             category-path="/"
-            factory-class="pl.edu.agh.ed.nodes.frequentPatterns.apriori.AprioriNodeFactory"
-            id="pl.edu.agh.ed.nodes.frequentPatterns.apriori.AprioriNodeFactory"/>
+            factory-class="pl.edu.agh.ed.nodes.frequentPatterns.apriori.AprioriNodeFactory"/>
    </extension>
    
 </plugin>

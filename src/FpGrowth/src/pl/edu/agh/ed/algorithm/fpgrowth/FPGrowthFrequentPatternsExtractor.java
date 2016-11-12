@@ -3,11 +3,9 @@ package pl.edu.agh.ed.algorithm.fpgrowth;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.OptionalLong;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -43,7 +41,7 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 			tree.addTransaction(frequentItems);
 		}
 		
-		return new FrequentPatternSet(transactionSet, fpgrowth(tree, new HashSet<>(), 0, itemSupport, minSupport)
+		return new FrequentPatternSet(transactionSet, fpgrowth(tree, new ArrayList<>(), 0, itemSupport, minSupport)
 				.entrySet()
 				.stream()
 				.map(entry -> new FrequentPattern(transactionSet, entry.getKey(), entry.getValue()))
@@ -55,11 +53,11 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 	}
 
-	private Map<Set<IItem>, Long> fpgrowth(FPTree tree, Set<IItem> prefix, long prefixSupport, 
+	private Map<List<IItem>, Long> fpgrowth(FPTree tree, List<IItem> prefix, long prefixSupport, 
 			Map<IItem, Long> mapSupport, long minSupport) {
-		Map<Set<IItem>, Long> result = new HashMap<>();
+		Map<List<IItem>, Long> result = new HashMap<>();
 		if (tree.getRoot().getChildren().size() == 1) {
-			Set<FPTreeNode> singlePath = new HashSet<>();
+			List<FPTreeNode> singlePath = new ArrayList<>();
 			FPTreeNode currentNode = tree.getRoot().getChildren().iterator().next();
 			while (currentNode.getChildren().size() == 1) {
 				singlePath.add(currentNode);
@@ -74,14 +72,14 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 			for (Entry<IItem, FPTreeNode> entry : headerMap.entrySet()) {
 				IItem item = entry.getKey();
 				long itemSupport = mapSupport.get(item);
-				Set<IItem> beta = new HashSet<>(prefix);
+				List<IItem> beta = new ArrayList<>(prefix);
 				beta.add(item);
 				long betaSupport = (prefixSupport < itemSupport) ? prefixSupport : itemSupport;
 				if (betaSupport >= minSupport) {
-					result.put(new HashSet<>(beta), betaSupport);
+					result.put(new ArrayList<>(beta), betaSupport);
 				}
 				
-				Set<List<FPTreeNode>> prefixPaths = new HashSet<>();
+				List<List<FPTreeNode>> prefixPaths = new ArrayList<>();
 				FPTreeNode path = tree.getHeaders().get(item);
 				
 				Map<IItem, Long> mapSupportBeta = new HashMap<>();
@@ -116,27 +114,25 @@ public class FPGrowthFrequentPatternsExtractor implements IFrequentPatternsExtra
 		return result;
 	}
 
-	private Map<Set<IItem>, Long> generateAllCombinationsForSinglePath(Set<FPTreeNode> singlePath, Set<IItem> prefix, 
+	private Map<List<IItem>, Long> generateAllCombinationsForSinglePath(List<FPTreeNode> singlePath, List<IItem> prefix, 
 			long prefixSupport, long minSupport, Map<IItem, Long> mapSupport) {
-		Set<Set<FPTreeNode>> powerset = new HashSet<>();
-		powerset.add(new HashSet<>());
-
-	    for (FPTreeNode node : singlePath) {
-	    	Set<Set<FPTreeNode>> temp = new HashSet<>();
-
-	        for (Set<FPTreeNode> innerSet : powerset) {
-	            innerSet = new HashSet<>(innerSet);
-	            innerSet.add(node);
-	            temp.add(innerSet);
-	        }
-	        powerset.addAll(temp);
-	    }
+		List<List<FPTreeNode>> powerset = new ArrayList<>();
+				
+		for (int i = 1; i < 2 << singlePath.size(); i++) {
+			List<FPTreeNode> temp = new ArrayList<>(); 
+			char[] chars = Integer.toBinaryString(i).toCharArray();
+			for (int pos = 0; pos < chars.length; pos++) {
+				if (chars[pos] == '1') {
+					temp.add(singlePath.get(pos));
+				}
+			}
+		}
 	    
 	    return powerset.stream()
-	    		.filter(set -> set.size() > 0)
-	    		.collect(Collectors.toMap(set -> {
-	    			Set<IItem> newSet = new HashSet<>(prefix);
-	    			newSet.addAll(set.stream().map(FPTreeNode::getItem).collect(Collectors.toList()));
+	    		.filter(list -> list.size() > 0)
+	    		.collect(Collectors.toMap(list -> {
+	    			List<IItem> newSet = new ArrayList<>(prefix);
+	    			newSet.addAll(list.stream().map(FPTreeNode::getItem).collect(Collectors.toList()));
 	    			return newSet;
 	    		}, set -> {
 	    			long setSupport = set.stream().map(FPTreeNode::getItem).mapToLong(mapSupport::get).min().orElse(0);

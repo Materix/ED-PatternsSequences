@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.SortedSet;
 
 import pl.edu.agh.ed.model.IItem;
@@ -23,7 +22,7 @@ public class FPTree {
 	}
 	
 	// TODO check this
-	public FPTree(Set<List<FPTreeNode>> prefixPaths, Map<IItem, Long> mapSupportBeta, long minSupport) {
+	public FPTree(List<List<FPTreeNode>> prefixPaths, Map<IItem, Long> mapSupportBeta, long minSupport) {
 		this();
 		for (List<FPTreeNode> prefixPath : prefixPaths) {
 			FPTreeNode currentNode = root;

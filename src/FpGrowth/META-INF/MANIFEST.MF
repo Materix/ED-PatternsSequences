@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FpGrowth
+Bundle-SymbolicName: FpGrowth;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Export-Package: pl.edu.agh.ed.algorithm.fpgrowth
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Require-Bundle: Model;bundle-version="1.0.0"

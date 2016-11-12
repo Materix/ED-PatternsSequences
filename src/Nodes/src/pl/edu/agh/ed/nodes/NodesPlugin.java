@@ -2,7 +2,7 @@
  * $Revision$ $Date$ $Author$
  *
  */
-package pl.edu.agh.ed.nodes.frequentPatterns.apriori;
+package pl.edu.agh.ed.nodes;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
@@ -16,14 +16,14 @@ import org.osgi.framework.BundleContext;
  *
  * @author 
  */
-public class AprioriNodePlugin extends Plugin {
+public class NodesPlugin extends Plugin {
     // The shared instance.
-    private static AprioriNodePlugin plugin;
+    private static NodesPlugin plugin;
 
     /**
      * The constructor.
      */
-    public AprioriNodePlugin() {
+    public NodesPlugin() {
         super();
         plugin = this;
     }
@@ -57,7 +57,7 @@ public class AprioriNodePlugin extends Plugin {
      * 
      * @return Singleton instance of the Plugin
      */
-    public static AprioriNodePlugin getDefault() {
+    public static NodesPlugin getDefault() {
         return plugin;
     }
 

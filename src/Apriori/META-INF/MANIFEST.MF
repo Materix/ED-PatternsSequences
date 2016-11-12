@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Apriori
+Bundle-SymbolicName: Apriori;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Export-Package: pl.edu.agh.ed.algorithm.apriori
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: Model;bundle-version="1.0.0"

@@ -32,4 +32,30 @@ public class Transaction implements ITransaction {
 		return this.items.containsAll(items);
 	}
 
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", items=" + items + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Transaction other = (Transaction) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 }

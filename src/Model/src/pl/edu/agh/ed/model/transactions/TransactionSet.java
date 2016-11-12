@@ -14,5 +14,5 @@ public class TransactionSet implements ITransactionSet {
 	@Override
 	public Set<ITransaction> getTransactions() {
 		return Collections.unmodifiableSet(transactions);
-	}
+	}	
 }

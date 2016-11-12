@@ -1,14 +1,17 @@
 package pl.edu.agh.ed.model;
 
-public class StringItem implements IItem {
+public class OrderStringItem implements IItem {
 	
 	private final int id;
 	
 	private final String value;
+	
+	private final int order;
 
-	public StringItem(int id, String value) {
+	public OrderStringItem(int id, String value, int order) {
 		this.id = id;
 		this.value = value;
+		this.order = order;
 	}
 
 	@Override
@@ -19,6 +22,15 @@ public class StringItem implements IItem {
 	public String getValue() {
 		return value;
 	}
+	
+	public int getOrder() {
+		return order;
+	}
+
+	@Override
+	public String toString() {
+		return value + ":" + Integer.toString(order);
+	}
 
 	@Override
 	public int hashCode() {
@@ -26,6 +38,7 @@ public class StringItem implements IItem {
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + ((value == null) ? 0 : value.hashCode());
+		result = prime * result + order;
 		return result;
 	}
 
@@ -37,14 +50,17 @@ public class StringItem implements IItem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		StringItem other = (StringItem) obj;
+		OrderStringItem other = (OrderStringItem) obj;
 		if (id != other.id)
 			return false;
 		if (value == null) {
 			if (other.value != null)
 				return false;
-		} else if (!value.equals(other.value))
+		} else if (!value.equals(other.value)) {
 			return false;
+		} else if (order != other.id) {
+			return false;
+		}
 		return true;
 	}
 }

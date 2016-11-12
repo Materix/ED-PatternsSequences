@@ -1,7 +1,7 @@
 package pl.edu.agh.ed.model.associationRules;
 
 import java.util.Collections;
-import java.util.Set;
+import java.util.List;
 
 import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
@@ -10,11 +10,11 @@ public class AssociationRule implements IAssociationRule {
 	
 	private final ITransactionSet transactionSet;
 	
-	private final Set<IItem> antecedent;
+	private final List<IItem> antecedent;
 	
-	private final Set<IItem> consequent;
+	private final List<IItem> consequent;
 
-	public AssociationRule(ITransactionSet transactionSet, Set<IItem> antecedent, Set<IItem> consequent) {
+	public AssociationRule(ITransactionSet transactionSet, List<IItem> antecedent, List<IItem> consequent) {
 		this.transactionSet = transactionSet;
 		this.antecedent = antecedent;
 		this.consequent = consequent;
@@ -26,13 +26,13 @@ public class AssociationRule implements IAssociationRule {
 	}
 
 	@Override
-	public Set<IItem> getAntecedent() {
-		return Collections.unmodifiableSet(antecedent);
+	public List<IItem> getAntecedent() {
+		return Collections.unmodifiableList(antecedent);
 	}
 
 	@Override
-	public Set<IItem> getConsequent() {
-		return Collections.unmodifiableSet(consequent);
+	public List<IItem> getConsequent() {
+		return Collections.unmodifiableList(consequent);
 	}
 
 }
