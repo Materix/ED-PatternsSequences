@@ -6,13 +6,13 @@ import java.util.List;
 
 import pl.edu.agh.ed.model.IItem;
 
-public class Transaction implements ITransaction {
+public class Transaction<T extends IItem> implements ITransaction<T> {
 	
 	private final int id;
 	
-	private final List<IItem> items;
+	private final List<T> items;
 
-	public Transaction(int id, List<IItem> items) {
+	public Transaction(int id, List<T> items) {
 		this.id = id;
 		this.items = items;
 	}
@@ -23,12 +23,12 @@ public class Transaction implements ITransaction {
 	}
 
 	@Override
-	public List<IItem> getItems() {
+	public List<T> getItems() {
 		return Collections.unmodifiableList(items);
 	}
 
 	@Override
-	public boolean contains(Collection<IItem> items) {
+	public boolean contains(Collection<T> items) {
 		return this.items.containsAll(items);
 	}
 
@@ -53,7 +53,7 @@ public class Transaction implements ITransaction {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Transaction other = (Transaction) obj;
+		Transaction<?> other = (Transaction<?>) obj;
 		if (id != other.id)
 			return false;
 		return true;

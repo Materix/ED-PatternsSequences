@@ -5,10 +5,10 @@ import java.util.List;
 import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
-public interface IFrequentPattern {
-	ITransactionSet getTransactionSet();
+public interface IFrequentPattern<T extends IItem> {
+	ITransactionSet<T> getTransactionSet();
 	
-	List<IItem> getItems();
+	List<T> getItems();
 	
 	long getSupport();
 	

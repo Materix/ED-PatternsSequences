@@ -13,13 +13,14 @@ import org.knime.core.data.def.StringCell;
 import org.knime.core.node.BufferedDataContainer;
 import org.knime.core.node.BufferedDataTable;
 
+import pl.edu.agh.ed.model.OrderStringItem;
 import pl.edu.agh.ed.model.patterns.IFrequentPattern;
 import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
 
-public class TableFrequentPatternSetWriter {
-	public BufferedDataTable write(IFrequentPatternSet frequentPatternSet, BufferedDataContainer dataContainer) {
+public class OrderStringFrequentPatternSetWriter implements IFrequentPatternSetWriter<OrderStringItem> {
+	public BufferedDataTable write(IFrequentPatternSet<OrderStringItem> frequentPatternSet, BufferedDataContainer dataContainer) {
 		OfInt idGenerator = IntStream.iterate(0, id -> id + 1).iterator();
-		for (IFrequentPattern pattern: frequentPatternSet.getFrequentPatterns()) {
+		for (IFrequentPattern<OrderStringItem> pattern: frequentPatternSet.getFrequentPatterns()) {
 			RowKey key = new RowKey(idGenerator.next().toString());
 			DataCell[] cells = new DataCell[3];
             cells[0] = new StringCell(formatPattern(pattern));
@@ -32,7 +33,7 @@ public class TableFrequentPatternSetWriter {
 		return dataContainer.getTable();
 	}
 	
-	private String formatPattern(IFrequentPattern pattern) {
+	private String formatPattern(IFrequentPattern<OrderStringItem> pattern) {
 		return pattern.getItems().stream()
 				.map(item -> item.toString())
 				.reduce((s1, s2) -> s1 + " " + s2)

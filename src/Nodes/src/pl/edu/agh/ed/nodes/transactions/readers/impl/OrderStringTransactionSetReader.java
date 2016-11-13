@@ -1,28 +1,27 @@
-package pl.edu.agh.ed.nodes.transactions.readers;
+package pl.edu.agh.ed.nodes.transactions.readers.impl;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PrimitiveIterator.OfInt;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.OrderStringItem;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 import pl.edu.agh.ed.model.transactions.Transaction;
 import pl.edu.agh.ed.model.transactions.TransactionSet;
+import pl.edu.agh.ed.nodes.transactions.readers.ITransactionSetReader;
 
-public class StringTransactionSetReader {
-	public ITransactionSet readTransactionSet(List<String> rows) {
+public class OrderStringTransactionSetReader implements ITransactionSetReader<OrderStringItem> {
+	public ITransactionSet<OrderStringItem> readTransactionSet(List<String> rows) {
 		OfInt itemIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
 		OfInt transactionIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
-		Map<Pair, IItem> cache = new HashMap<>();
-		return new TransactionSet(rows.stream().map(row -> {
+		Map<Pair, OrderStringItem> cache = new HashMap<>();
+		return new TransactionSet<>(rows.stream().map(row -> {
 			Map<String, Integer> frequency = new HashMap<>();
-			return new Transaction(transactionIdIterator.nextInt(), Arrays.asList(row.split(" ")).stream().map(item -> {
+			return new Transaction<>(transactionIdIterator.nextInt(), Arrays.asList(row.split(" ")).stream().map(item -> {
 				int order = frequency.getOrDefault(item, 0) + 1;
 				frequency.put(item, order);
 				

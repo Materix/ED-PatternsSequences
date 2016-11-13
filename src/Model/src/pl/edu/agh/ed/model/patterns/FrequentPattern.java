@@ -6,33 +6,33 @@ import java.util.List;
 import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
-public class FrequentPattern implements IFrequentPattern {
+public class FrequentPattern<T extends IItem> implements IFrequentPattern<T> {
 	
-	private final ITransactionSet transactionSet;
+	private final ITransactionSet<T> transactionSet;
 	
-	private final List<IItem> items;
+	private final List<T> items;
 	
 	private final long support;
 	
-	public FrequentPattern(ITransactionSet transactionSet, List<IItem> items) {
+	public FrequentPattern(ITransactionSet<T> transactionSet, List<T> items) {
 		this(transactionSet, items, transactionSet.stream()
 			.filter(transaction -> transaction.contains(items))
 			.count());
 	}
 	
-	public FrequentPattern(ITransactionSet transactionSet, List<IItem> items, long support) {
+	public FrequentPattern(ITransactionSet<T> transactionSet, List<T> items, long support) {
 		this.transactionSet = transactionSet;
 		this.items = items;
 		this.support = support;
 	}
 
 	@Override
-	public ITransactionSet getTransactionSet() {
+	public ITransactionSet<T> getTransactionSet() {
 		return transactionSet;
 	}
 
 	@Override
-	public List<IItem> getItems() {
+	public List<T> getItems() {
 		return Collections.unmodifiableList(items);
 	}
 
@@ -63,7 +63,7 @@ public class FrequentPattern implements IFrequentPattern {
 		if (this == obj) return true;
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
-		FrequentPattern other = (FrequentPattern) obj;
+		FrequentPattern<?> other = (FrequentPattern<?>) obj;
 		if (items == null) {
 			if (other.items != null) {
 				return false;

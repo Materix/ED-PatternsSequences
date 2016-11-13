@@ -5,10 +5,10 @@ import java.util.List;
 
 import pl.edu.agh.ed.model.IItem;
 
-public interface ITransaction {
+public interface ITransaction<T extends IItem> {
 	int getId(); 
 	
-	List<IItem> getItems();
+	List<T> getItems();
 	
-	boolean contains(Collection<IItem> items);
+	boolean contains(Collection<T> items);
 }

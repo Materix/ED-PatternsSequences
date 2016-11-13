@@ -6,32 +6,32 @@ import java.util.List;
 import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
-public class AssociationRule implements IAssociationRule {
+public class AssociationRule<T extends IItem> implements IAssociationRule<T> {
 	
-	private final ITransactionSet transactionSet;
+	private final ITransactionSet<T> transactionSet;
 	
-	private final List<IItem> antecedent;
+	private final List<T> antecedent;
 	
-	private final List<IItem> consequent;
+	private final List<T> consequent;
 
-	public AssociationRule(ITransactionSet transactionSet, List<IItem> antecedent, List<IItem> consequent) {
+	public AssociationRule(ITransactionSet<T> transactionSet, List<T> antecedent, List<T> consequent) {
 		this.transactionSet = transactionSet;
 		this.antecedent = antecedent;
 		this.consequent = consequent;
 	}
 
 	@Override
-	public ITransactionSet getTransactionSet() {
+	public ITransactionSet<T> getTransactionSet() {
 		return transactionSet;
 	}
 
 	@Override
-	public List<IItem> getAntecedent() {
+	public List<T> getAntecedent() {
 		return Collections.unmodifiableList(antecedent);
 	}
 
 	@Override
-	public List<IItem> getConsequent() {
+	public List<T> getConsequent() {
 		return Collections.unmodifiableList(consequent);
 	}
 

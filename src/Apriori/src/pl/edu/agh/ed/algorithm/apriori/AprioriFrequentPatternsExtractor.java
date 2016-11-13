@@ -16,41 +16,41 @@ import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
 import pl.edu.agh.ed.model.transactions.ITransaction;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
-public class AprioriFrequentPatternsExtractor implements IFrequentPatternsExtractor {
+public class AprioriFrequentPatternsExtractor<T extends IItem> implements IFrequentPatternsExtractor<T> {
 
 	@Override
-	public IFrequentPatternSet extract(ITransactionSet transactionSet, int minSupport) {
-        Set<IFrequentPattern> candidatePatterns = gen1ItemPatterns(transactionSet, minSupport);
-        Set<IFrequentPattern> patterns = new HashSet<>(candidatePatterns);
+	public IFrequentPatternSet<T> extract(ITransactionSet<T> transactionSet, int minSupport) {
+        Set<IFrequentPattern<T>> candidatePatterns = gen1ItemPatterns(transactionSet, minSupport);
+        Set<IFrequentPattern<T>> patterns = new HashSet<>(candidatePatterns);
         int tier = 2;
         while (candidatePatterns.size() >= 2) {
         	candidatePatterns = genApriori(candidatePatterns, tier, minSupport);
         	patterns.addAll(candidatePatterns);
             tier++;
         }
-        return new FrequentPatternSet(transactionSet, patterns);
+        return new FrequentPatternSet<>(transactionSet, patterns);
     }
 	
-    private Set<IFrequentPattern> gen1ItemPatterns(ITransactionSet transactionSet, int minSupport) {
+    private Set<IFrequentPattern<T>> gen1ItemPatterns(ITransactionSet<T> transactionSet, int minSupport) {
     	return transactionSet.stream()
         	.map(ITransaction::getItems)
         	.flatMap(List::stream)
         	.distinct()
-        	.map(item -> new FrequentPattern(transactionSet, Collections.singletonList(item)))
+        	.map(item -> new FrequentPattern<>(transactionSet, Collections.singletonList(item)))
         	.filter(pattern -> pattern.getSupport() >= minSupport)
         	.collect(Collectors.toSet());
     }
 
-    private Set<IFrequentPattern> genApriori(Set<IFrequentPattern> candidatePatterns, int tier, int minSupport) {
-        List<IFrequentPattern> list = new ArrayList<>(candidatePatterns);
-        Set<IFrequentPattern> result = new HashSet<>();
+    private Set<IFrequentPattern<T>> genApriori(Set<IFrequentPattern<T>> candidatePatterns, int tier, int minSupport) {
+        List<IFrequentPattern<T>> list = new ArrayList<>(candidatePatterns);
+        Set<IFrequentPattern<T>> result = new HashSet<>();
                 
         for (int i = 0; i < list.size() - 1; i++) {
         	for (int j = i + 1; j < list.size(); j++) {
-                IFrequentPattern firstPattern = list.get(i);
-                IFrequentPattern secondPattern = list.get(j);
+                IFrequentPattern<T> firstPattern = list.get(i);
+                IFrequentPattern<T> secondPattern = list.get(j);
                 if (canCombine(firstPattern, secondPattern)) {
-                	FrequentPattern pattern = mergePatterns(firstPattern, secondPattern);
+                	FrequentPattern<T> pattern = mergePatterns(firstPattern, secondPattern);
                 	if (pattern.getSupport() >= minSupport && pattern.size() == tier) {
                 		result.add(pattern);
                 	}
@@ -60,41 +60,41 @@ public class AprioriFrequentPatternsExtractor implements IFrequentPatternsExtrac
         return result;
     }
     
-    public FrequentPattern mergePatterns(IFrequentPattern firstPattern, IFrequentPattern secondPattern) {
-    	List<IItem> temp = new ArrayList<>(secondPattern.getItems());
-    	List<IItem> intersection = new ArrayList<>();
-    	for (IItem item: firstPattern.getItems()) {
+    public FrequentPattern<T> mergePatterns(IFrequentPattern<T> firstPattern, IFrequentPattern<T> secondPattern) {
+    	List<T> temp = new ArrayList<>(secondPattern.getItems());
+    	List<T> intersection = new ArrayList<>();
+    	for (T item: firstPattern.getItems()) {
     		if (temp.contains(item)) {
     			temp.remove(item);
     			intersection.add(item);
     		}
     	}
     	
-    	List<IItem> first = new ArrayList<>(firstPattern.getItems());
-    	List<IItem> second = new ArrayList<>(secondPattern.getItems());
+    	List<T> first = new ArrayList<>(firstPattern.getItems());
+    	List<T> second = new ArrayList<>(secondPattern.getItems());
     	first.removeAll(intersection);
     	second.removeAll(intersection);
     	intersection.add(first.get(0));
     	intersection.add(second.get(0));
-        return new FrequentPattern(firstPattern.getTransactionSet(), intersection);
+        return new FrequentPattern<>(firstPattern.getTransactionSet(), intersection);
     }
     
-    private boolean canCombine(IFrequentPattern p, IFrequentPattern q) {
+    private boolean canCombine(IFrequentPattern<T> p, IFrequentPattern<T> q) {
         return p.size() == q.size() && checkEqualsWithoutOneElement(p, q);
     }
 
-    private boolean checkEqualsWithoutOneElement(IFrequentPattern firstPattern, IFrequentPattern secondPattern) {
-    	List<IItem> temp = new ArrayList<>(secondPattern.getItems());
-    	List<IItem> intersection = new ArrayList<>();
-    	for (IItem item: firstPattern.getItems()) {
+    private boolean checkEqualsWithoutOneElement(IFrequentPattern<T> firstPattern, IFrequentPattern<T> secondPattern) {
+    	List<T> temp = new ArrayList<>(secondPattern.getItems());
+    	List<T> intersection = new ArrayList<>();
+    	for (T item: firstPattern.getItems()) {
     		if (temp.contains(item)) {
     			temp.remove(item);
     			intersection.add(item);
     		}
     	}
     	
-    	List<IItem> first = new ArrayList<>(firstPattern.getItems());
-    	List<IItem> second = new ArrayList<>(secondPattern.getItems());
+    	List<T> first = new ArrayList<>(firstPattern.getItems());
+    	List<T> second = new ArrayList<>(secondPattern.getItems());
     	first.removeAll(intersection);
     	second.removeAll(intersection);
         return first.size() == 1 && second.size() == 1 && !first.get(0).equals(second.get(0));

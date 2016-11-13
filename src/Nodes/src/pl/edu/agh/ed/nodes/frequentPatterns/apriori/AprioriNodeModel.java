@@ -25,11 +25,11 @@ import org.knime.core.node.defaultnodesettings.SettingsModelIntegerBounded;
 
 import pl.edu.agh.ed.algorithm.IFrequentPatternsExtractor;
 import pl.edu.agh.ed.algorithm.apriori.AprioriFrequentPatternsExtractor;
+import pl.edu.agh.ed.model.OrderStringItem;
 import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
-import pl.edu.agh.ed.nodes.transactions.readers.StringTransactionSetReader;
-import pl.edu.agh.ed.nodes.transactions.writers.TableFrequentPatternSetWriter;
-
+import pl.edu.agh.ed.nodes.transactions.readers.impl.OrderStringTransactionSetReader;
+import pl.edu.agh.ed.nodes.transactions.writers.OrderStringFrequentPatternSetWriter;
 
 /**
  * This is the model implementation of Apriori.
@@ -39,8 +39,8 @@ import pl.edu.agh.ed.nodes.transactions.writers.TableFrequentPatternSetWriter;
  */
 public class AprioriNodeModel extends NodeModel {
     
-    // the logger instance
-    private static final NodeLogger logger = NodeLogger
+    @SuppressWarnings("unused")
+	private static final NodeLogger logger = NodeLogger
             .getLogger(AprioriNodeModel.class);
         
 	static final String CFGKEY_COUNT = "Count";
@@ -68,15 +68,15 @@ public class AprioriNodeModel extends NodeModel {
     @Override
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
             final ExecutionContext exec) throws Exception {
-    	StringTransactionSetReader reader = new StringTransactionSetReader();
-    	ITransactionSet transactionSet = reader.readTransactionSet(StreamSupport.stream(inData[0].spliterator(), false)
+    	OrderStringTransactionSetReader reader = new OrderStringTransactionSetReader();
+    	ITransactionSet<OrderStringItem> transactionSet = reader.readTransactionSet(StreamSupport.stream(inData[0].spliterator(), false)
     			.map(row -> row.getCell(0))
     			.map(cell -> (StringValue)cell)
     			.map(cell -> cell.getStringValue())
     			.collect(Collectors.toList()));
-    	IFrequentPatternsExtractor extractor = new AprioriFrequentPatternsExtractor();
-    	IFrequentPatternSet patterns = extractor.extract(transactionSet, SUPPORT_SETTINGS.getIntValue());
-    	TableFrequentPatternSetWriter writer = new TableFrequentPatternSetWriter();
+    	IFrequentPatternsExtractor<OrderStringItem> extractor = new AprioriFrequentPatternsExtractor<>();
+    	IFrequentPatternSet<OrderStringItem> patterns = extractor.extract(transactionSet, SUPPORT_SETTINGS.getIntValue());
+    	OrderStringFrequentPatternSetWriter writer = new OrderStringFrequentPatternSetWriter();
 
     	BufferedDataContainer dataTable = exec.createDataContainer(OUTPUT_DATA_TABLE_SPEC);
         return new BufferedDataTable[]{writer.write(patterns, dataTable)};
