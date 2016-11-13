@@ -12,6 +12,7 @@ import org.knime.core.node.defaultnodesettings.SettingsModelString;
 
 import pl.edu.agh.ed.algorithm.IFrequentPatternsExtractor;
 import pl.edu.agh.ed.algorithm.apriori.AprioriFrequentPatternsExtractor;
+import pl.edu.agh.ed.algorithm.eclat.EclatFrequentPatternsExctractor;
 import pl.edu.agh.ed.algorithm.fpgrowth.FPGrowthFrequentPatternsExtractor;
 import pl.edu.agh.ed.model.IItem;
 
@@ -64,6 +65,7 @@ public class AprioriNodeConstans {
     	ALGORITHM = new HashMap<>();
     	ALGORITHM.put("Apriori", (Class<? extends IFrequentPatternsExtractor<IItem>>) AprioriFrequentPatternsExtractor.class);
     	ALGORITHM.put("FPGrowth", (Class<? extends IFrequentPatternsExtractor<IItem>>) FPGrowthFrequentPatternsExtractor.class);
+    	ALGORITHM.put("Eclat", (Class<? extends IFrequentPatternsExtractor<IItem>>) EclatFrequentPatternsExctractor.class);
     	
     }
     

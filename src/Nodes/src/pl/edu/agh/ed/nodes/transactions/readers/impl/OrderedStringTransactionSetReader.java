@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PrimitiveIterator.OfInt;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.OrderedStringItem;
+import pl.edu.agh.ed.model.transactions.ITransaction;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 import pl.edu.agh.ed.model.transactions.Transaction;
 import pl.edu.agh.ed.model.transactions.TransactionSet;
@@ -20,7 +22,7 @@ public class OrderedStringTransactionSetReader implements ITransactionSetReader<
 		OfInt itemIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
 		OfInt transactionIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
 		Map<Pair, IItem> cache = new HashMap<>();
-		return new TransactionSet<>(rows.stream().map(row -> {
+		Set<ITransaction<IItem>> transactions = rows.stream().map(row -> {
 			Map<String, Integer> frequency = new HashMap<>();
 			return new Transaction<>(transactionIdIterator.nextInt(), Arrays.asList(row.split(" ")).stream().map(item -> {
 				int order = frequency.getOrDefault(item, 0) + 1;
@@ -32,7 +34,8 @@ public class OrderedStringTransactionSetReader implements ITransactionSetReader<
 				}
 				return cache.get(key);
 			}).collect(Collectors.toList()));
-		}).collect(Collectors.toSet()));
+		}).collect(Collectors.toSet());
+		return new TransactionSet<>(cache.values().stream().collect(Collectors.toMap(IItem::getId, i -> i)), transactions);
 	}
 	
 	private static final class Pair {

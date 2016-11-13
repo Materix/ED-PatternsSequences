@@ -8,6 +8,8 @@ import pl.edu.agh.ed.model.IItem;
 public interface ITransactionSet<T extends IItem> {
 	Set<ITransaction<T>> getTransactions();
 	
+	T getItem(int id);
+	
 	default Stream<ITransaction<T>> stream() {
 		return getTransactions().stream();
 	}
