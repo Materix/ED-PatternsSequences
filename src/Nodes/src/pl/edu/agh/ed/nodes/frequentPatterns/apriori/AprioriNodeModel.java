@@ -23,7 +23,6 @@ import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 
 import pl.edu.agh.ed.algorithm.IFrequentPatternsExtractor;
-import pl.edu.agh.ed.algorithm.apriori.AprioriFrequentPatternsExtractor;
 import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
@@ -74,7 +73,7 @@ public class AprioriNodeModel extends NodeModel {
     			.map(cell -> (StringValue)cell)
     			.map(cell -> cell.getStringValue())
     			.collect(Collectors.toList()));
-    	IFrequentPatternsExtractor<IItem> extractor = new AprioriFrequentPatternsExtractor<>();
+    	IFrequentPatternsExtractor<IItem> extractor = AprioriNodeConstans.createExtractor();
     	IFrequentPatternSet<IItem> patterns;
     	if (AprioriNodeConstans.IS_RELATIVE_SETTINGS.getBooleanValue()) {
     		patterns = extractor.extract(transactionSet, AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.getDoubleValue());

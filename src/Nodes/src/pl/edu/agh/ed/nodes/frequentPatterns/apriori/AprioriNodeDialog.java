@@ -3,6 +3,7 @@ package pl.edu.agh.ed.nodes.frequentPatterns.apriori;
 import org.knime.core.node.defaultnodesettings.DefaultNodeSettingsPane;
 import org.knime.core.node.defaultnodesettings.DialogComponentBoolean;
 import org.knime.core.node.defaultnodesettings.DialogComponentNumber;
+import org.knime.core.node.defaultnodesettings.DialogComponentStringSelection;
 /**
  * <code>NodeDialog</code> for the "Apriori" Node.
  * 
@@ -31,6 +32,8 @@ public class AprioriNodeDialog extends DefaultNodeSettingsPane {
         		"Relative support:", 0.01));
         addDialogComponent(new DialogComponentBoolean(AprioriNodeConstans.READ_AS_ORDERED_SETTINGS, 
         		"Read as ordered"));
+        addDialogComponent(new DialogComponentStringSelection(AprioriNodeConstans.ALGORITHM_SETTINGS, 
+        		"Algorithm", AprioriNodeConstans.ALGORITHM.keySet()));
         
     }
 }
