@@ -21,15 +21,17 @@ import org.knime.core.node.NodeLogger;
 import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
-import org.knime.core.node.defaultnodesettings.SettingsModelIntegerBounded;
 
 import pl.edu.agh.ed.algorithm.IFrequentPatternsExtractor;
 import pl.edu.agh.ed.algorithm.apriori.AprioriFrequentPatternsExtractor;
-import pl.edu.agh.ed.model.OrderStringItem;
+import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
-import pl.edu.agh.ed.nodes.transactions.readers.impl.OrderStringTransactionSetReader;
-import pl.edu.agh.ed.nodes.transactions.writers.OrderStringFrequentPatternSetWriter;
+import pl.edu.agh.ed.nodes.transactions.readers.ITransactionSetReader;
+import pl.edu.agh.ed.nodes.transactions.readers.impl.OrderedStringTransactionSetReader;
+import pl.edu.agh.ed.nodes.transactions.readers.impl.StringTransactionSetReader;
+import pl.edu.agh.ed.nodes.transactions.writers.IFrequentPatternSetWriter;
+import pl.edu.agh.ed.nodes.transactions.writers.impl.FrequentPatternSetWriter;
 
 /**
  * This is the model implementation of Apriori.
@@ -42,20 +44,11 @@ public class AprioriNodeModel extends NodeModel {
     @SuppressWarnings("unused")
 	private static final NodeLogger logger = NodeLogger
             .getLogger(AprioriNodeModel.class);
-        
-	static final String CFGKEY_COUNT = "Count";
-
-    static final int DEFAULT_COUNT = 10;
-
-    static final SettingsModelIntegerBounded SUPPORT_SETTINGS =
-        new SettingsModelIntegerBounded(AprioriNodeModel.CFGKEY_COUNT,
-                    AprioriNodeModel.DEFAULT_COUNT,
-                    0, Integer.MAX_VALUE);
     
     private static final DataTableSpec OUTPUT_DATA_TABLE_SPEC = new DataTableSpec(
     		new DataColumnSpecCreator("Pattern", StringCell.TYPE).createSpec(),
     		new DataColumnSpecCreator("Support", LongCell.TYPE).createSpec(),
-    		new DataColumnSpecCreator("Normalized support", DoubleCell.TYPE).createSpec()
+    		new DataColumnSpecCreator("Relative support", DoubleCell.TYPE).createSpec()
 		);
     
     protected AprioriNodeModel() {
@@ -68,15 +61,28 @@ public class AprioriNodeModel extends NodeModel {
     @Override
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
             final ExecutionContext exec) throws Exception {
-    	OrderStringTransactionSetReader reader = new OrderStringTransactionSetReader();
-    	ITransactionSet<OrderStringItem> transactionSet = reader.readTransactionSet(StreamSupport.stream(inData[0].spliterator(), false)
+    	ITransactionSetReader<IItem> reader;
+    	if (AprioriNodeConstans.READ_AS_ORDERED_SETTINGS.getBooleanValue()) {
+    		reader = new OrderedStringTransactionSetReader();
+    	} else {
+    		reader = new StringTransactionSetReader();
+    	}
+    	
+    	ITransactionSet<IItem> transactionSet = 
+			reader.readTransactionSet(StreamSupport.stream(inData[0].spliterator(), false)
     			.map(row -> row.getCell(0))
     			.map(cell -> (StringValue)cell)
     			.map(cell -> cell.getStringValue())
     			.collect(Collectors.toList()));
-    	IFrequentPatternsExtractor<OrderStringItem> extractor = new AprioriFrequentPatternsExtractor<>();
-    	IFrequentPatternSet<OrderStringItem> patterns = extractor.extract(transactionSet, SUPPORT_SETTINGS.getIntValue());
-    	OrderStringFrequentPatternSetWriter writer = new OrderStringFrequentPatternSetWriter();
+    	IFrequentPatternsExtractor<IItem> extractor = new AprioriFrequentPatternsExtractor<>();
+    	IFrequentPatternSet<IItem> patterns;
+    	if (AprioriNodeConstans.IS_RELATIVE_SETTINGS.getBooleanValue()) {
+    		patterns = extractor.extract(transactionSet, AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.getDoubleValue());
+    	} else {
+    		patterns = extractor.extract(transactionSet, AprioriNodeConstans.SUPPORT_SETTINGS.getIntValue());
+    	}
+    	
+    	IFrequentPatternSetWriter<IItem> writer = new FrequentPatternSetWriter<>();
 
     	BufferedDataContainer dataTable = exec.createDataContainer(OUTPUT_DATA_TABLE_SPEC);
         return new BufferedDataTable[]{writer.write(patterns, dataTable)};
@@ -113,7 +119,10 @@ public class AprioriNodeModel extends NodeModel {
      */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
-    	SUPPORT_SETTINGS.saveSettingsTo(settings);
+    	AprioriNodeConstans.SUPPORT_SETTINGS.saveSettingsTo(settings);
+    	AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.saveSettingsTo(settings);
+    	AprioriNodeConstans.IS_RELATIVE_SETTINGS.saveSettingsTo(settings);
+    	AprioriNodeConstans.READ_AS_ORDERED_SETTINGS.saveSettingsTo(settings);
     }
 
     /**
@@ -122,7 +131,10 @@ public class AprioriNodeModel extends NodeModel {
     @Override
     protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-    	SUPPORT_SETTINGS.loadSettingsFrom(settings);
+    	AprioriNodeConstans.SUPPORT_SETTINGS.loadSettingsFrom(settings);
+    	AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.loadSettingsFrom(settings);
+    	AprioriNodeConstans.IS_RELATIVE_SETTINGS.loadSettingsFrom(settings);
+    	AprioriNodeConstans.READ_AS_ORDERED_SETTINGS.loadSettingsFrom(settings);
     }
 
     /**
@@ -131,7 +143,10 @@ public class AprioriNodeModel extends NodeModel {
     @Override
     protected void validateSettings(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-        SUPPORT_SETTINGS.validateSettings(settings);
+    	AprioriNodeConstans.SUPPORT_SETTINGS.validateSettings(settings);
+    	AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.validateSettings(settings);
+    	AprioriNodeConstans.IS_RELATIVE_SETTINGS.validateSettings(settings);
+    	AprioriNodeConstans.READ_AS_ORDERED_SETTINGS.validateSettings(settings);
     }
     
     /**

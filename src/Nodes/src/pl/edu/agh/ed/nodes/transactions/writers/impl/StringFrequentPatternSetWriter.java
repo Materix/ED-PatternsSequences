@@ -1,4 +1,4 @@
-package pl.edu.agh.ed.nodes.transactions.writers;
+package pl.edu.agh.ed.nodes.transactions.writers.impl;
 
 import java.util.PrimitiveIterator.OfInt;
 import java.util.stream.IntStream;
@@ -13,19 +13,20 @@ import org.knime.core.data.def.StringCell;
 import org.knime.core.node.BufferedDataContainer;
 import org.knime.core.node.BufferedDataTable;
 
-import pl.edu.agh.ed.model.OrderStringItem;
+import pl.edu.agh.ed.model.StringItem;
 import pl.edu.agh.ed.model.patterns.IFrequentPattern;
 import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
+import pl.edu.agh.ed.nodes.transactions.writers.IFrequentPatternSetWriter;
 
-public class OrderStringFrequentPatternSetWriter implements IFrequentPatternSetWriter<OrderStringItem> {
-	public BufferedDataTable write(IFrequentPatternSet<OrderStringItem> frequentPatternSet, BufferedDataContainer dataContainer) {
+public class StringFrequentPatternSetWriter implements IFrequentPatternSetWriter<StringItem> {
+	public BufferedDataTable write(IFrequentPatternSet<StringItem> frequentPatternSet, BufferedDataContainer dataContainer) {
 		OfInt idGenerator = IntStream.iterate(0, id -> id + 1).iterator();
-		for (IFrequentPattern<OrderStringItem> pattern: frequentPatternSet.getFrequentPatterns()) {
+		for (IFrequentPattern<StringItem> pattern: frequentPatternSet.getFrequentPatterns()) {
 			RowKey key = new RowKey(idGenerator.next().toString());
 			DataCell[] cells = new DataCell[3];
             cells[0] = new StringCell(formatPattern(pattern));
             cells[1] = new LongCell(pattern.getSupport());
-            cells[2] = new DoubleCell(pattern.getNormalizedSupport());
+            cells[2] = new DoubleCell(pattern.getRelativeSupport());
             DataRow row = new DefaultRow(key, cells);
             dataContainer.addRowToTable(row);
 		}
@@ -33,7 +34,7 @@ public class OrderStringFrequentPatternSetWriter implements IFrequentPatternSetW
 		return dataContainer.getTable();
 	}
 	
-	private String formatPattern(IFrequentPattern<OrderStringItem> pattern) {
+	private String formatPattern(IFrequentPattern<StringItem> pattern) {
 		return pattern.getItems().stream()
 				.map(item -> item.toString())
 				.reduce((s1, s2) -> s1 + " " + s2)

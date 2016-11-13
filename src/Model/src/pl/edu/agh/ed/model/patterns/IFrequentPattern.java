@@ -12,7 +12,7 @@ public interface IFrequentPattern<T extends IItem> {
 	
 	long getSupport();
 	
-	default double getNormalizedSupport() {
+	default double getRelativeSupport() {
 		return ((double)getSupport()) / getTransactionSet().size();
 	}
 

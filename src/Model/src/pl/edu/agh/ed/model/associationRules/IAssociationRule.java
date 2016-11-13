@@ -36,7 +36,7 @@ public interface IAssociationRule<T extends IItem> {
 			.count();
 	}
 	
-	default double getNormalizedSupport() {
+	default double getRelativeSupport() {
 		return getSupport() / getTransactionSet().size();
 	}
 	
