@@ -1,8 +1,6 @@
-package pl.edu.agh.ed.algorithm.frequent.sequences.spmf;
+package pl.edu.agh.ed.algorithm.frequent.sequences.spmf.gsp;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,8 +21,6 @@ import pl.edu.agh.ed.algorithm.IFrequentSequencesExtractor;
 import pl.edu.agh.ed.model.Group;
 import pl.edu.agh.ed.model.IGroup;
 import pl.edu.agh.ed.model.IItem;
-import pl.edu.agh.ed.model.frequent.patterns.FrequentPattern;
-import pl.edu.agh.ed.model.frequent.patterns.FrequentPatternSet;
 import pl.edu.agh.ed.model.frequent.sequence.FrequentSequence;
 import pl.edu.agh.ed.model.frequent.sequence.FrequentSequenceSet;
 import pl.edu.agh.ed.model.frequent.sequence.IFrequentSequence;

@@ -16,4 +16,8 @@ Export-Package: pl.edu.agh.ed.algorithm.frequent.patterns.spmf,
  pl.edu.agh.ed.algorithm.frequent.patterns.spmf.prepost,
  pl.edu.agh.ed.algorithm.frequent.patterns.spmf.prepostplus,
  pl.edu.agh.ed.algorithm.frequent.patterns.spmf.relim,
- pl.edu.agh.ed.algorithm.frequent.sequences.spmf
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf,
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf.cmspam,
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf.gsp,
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf.prefixSpan,
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf.spade

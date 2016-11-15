@@ -11,10 +11,11 @@ import org.knime.core.node.defaultnodesettings.SettingsModelIntegerBounded;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
 
 import pl.edu.agh.ed.algorithm.IFrequentSequencesExtractor;
-import pl.edu.agh.ed.algorithm.apriori.AprioriFrequentPatternsExtractor;
-import pl.edu.agh.ed.algorithm.frequent.sequences.spmf.GSPFrequentSequenceExtractor;
+import pl.edu.agh.ed.algorithm.frequent.sequences.spmf.cmspam.CMSPAMFrequentSequenceExtractor;
+import pl.edu.agh.ed.algorithm.frequent.sequences.spmf.gsp.GSPFrequentSequenceExtractor;
+import pl.edu.agh.ed.algorithm.frequent.sequences.spmf.prefixSpan.PrefixSpanFrequentSequenceExtractor;
+import pl.edu.agh.ed.algorithm.frequent.sequences.spmf.spade.SPADEFrequentSequenceExtractor;
 
-@SuppressWarnings("unchecked")
 public class FrequentSequencesExtractorNodeConstans {
 	private static final String CFGKEY_IS_RELATIVE = "IS_RELATIVE";
 	
@@ -62,7 +63,10 @@ public class FrequentSequencesExtractorNodeConstans {
     	isRelativeListener.stateChanged(null);
     	
     	ALGORITHM = new HashMap<>();
-    	ALGORITHM.put("GSP", (Class<? extends IFrequentSequencesExtractor>) GSPFrequentSequenceExtractor.class);
+    	ALGORITHM.put("GSP", GSPFrequentSequenceExtractor.class);
+    	ALGORITHM.put("PrefixSpan", PrefixSpanFrequentSequenceExtractor.class);
+    	ALGORITHM.put("SPADE", SPADEFrequentSequenceExtractor.class);
+    	ALGORITHM.put("CM-SPAM", CMSPAMFrequentSequenceExtractor.class);
     }
     
     public static IFrequentSequencesExtractor createExtractor() {
