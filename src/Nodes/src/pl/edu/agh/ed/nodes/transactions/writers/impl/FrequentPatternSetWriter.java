@@ -14,8 +14,8 @@ import org.knime.core.node.BufferedDataContainer;
 import org.knime.core.node.BufferedDataTable;
 
 import pl.edu.agh.ed.model.IItem;
-import pl.edu.agh.ed.model.patterns.IFrequentPattern;
-import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
+import pl.edu.agh.ed.model.frequent.patterns.IFrequentPattern;
+import pl.edu.agh.ed.model.frequent.patterns.IFrequentPatternSet;
 import pl.edu.agh.ed.nodes.transactions.writers.IFrequentPatternSetWriter;
 
 public class FrequentPatternSetWriter<T extends IItem> implements IFrequentPatternSetWriter<T> {

@@ -1,4 +1,4 @@
-package pl.edu.agh.ed.nodes.frequentPatterns.apriori;
+package pl.edu.agh.ed.nodes.frequentSequences;
 
 import org.knime.core.node.defaultnodesettings.DefaultNodeSettingsPane;
 import org.knime.core.node.defaultnodesettings.DialogComponentBoolean;
@@ -15,25 +15,25 @@ import org.knime.core.node.defaultnodesettings.DialogComponentStringSelection;
  * 
  * @author 
  */
-public class AprioriNodeDialog extends DefaultNodeSettingsPane {
+public class FrequentSequencesExtractorNodeDialog extends DefaultNodeSettingsPane {
 
 	/**
      * New pane for configuring Apriori node dialog.
      * This is just a suggestion to demonstrate possible default dialog
      * components.
      */
-    protected AprioriNodeDialog() {
+    protected FrequentSequencesExtractorNodeDialog() {
         super();        
-        addDialogComponent(new DialogComponentBoolean(AprioriNodeConstans.IS_RELATIVE_SETTINGS, 
+        addDialogComponent(new DialogComponentBoolean(FrequentSequencesExtractorNodeConstans.IS_RELATIVE_SETTINGS, 
         		"Is relative:"));
-        addDialogComponent(new DialogComponentNumber(AprioriNodeConstans.SUPPORT_SETTINGS, 
+        addDialogComponent(new DialogComponentNumber(FrequentSequencesExtractorNodeConstans.SUPPORT_SETTINGS, 
         		"Support:", 1));
-        addDialogComponent(new DialogComponentNumber(AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS, 
+        addDialogComponent(new DialogComponentNumber(FrequentSequencesExtractorNodeConstans.RELATIVE_SUPPORT_SETTINGS, 
         		"Relative support:", 0.01));
-        addDialogComponent(new DialogComponentBoolean(AprioriNodeConstans.READ_AS_ORDERED_SETTINGS, 
+        addDialogComponent(new DialogComponentBoolean(FrequentSequencesExtractorNodeConstans.READ_AS_ORDERED_SETTINGS, 
         		"Read as ordered"));
-        addDialogComponent(new DialogComponentStringSelection(AprioriNodeConstans.ALGORITHM_SETTINGS, 
-        		"Algorithm", AprioriNodeConstans.ALGORITHM.keySet()));
+        addDialogComponent(new DialogComponentStringSelection(FrequentSequencesExtractorNodeConstans.ALGORITHM_SETTINGS, 
+        		"Algorithm", FrequentSequencesExtractorNodeConstans.ALGORITHM.keySet()));
         
     }
 }

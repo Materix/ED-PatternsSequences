@@ -1,4 +1,4 @@
-package pl.edu.agh.ed.nodes.frequentPatterns.apriori;
+package pl.edu.agh.ed.nodes.frequentSequences;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,15 +22,14 @@ import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 
-import pl.edu.agh.ed.algorithm.IFrequentPatternsExtractor;
-import pl.edu.agh.ed.model.IItem;
-import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
-import pl.edu.agh.ed.model.transactions.ITransactionSet;
-import pl.edu.agh.ed.nodes.transactions.readers.ITransactionSetReader;
-import pl.edu.agh.ed.nodes.transactions.readers.impl.OrderedStringTransactionSetReader;
-import pl.edu.agh.ed.nodes.transactions.readers.impl.StringTransactionSetReader;
-import pl.edu.agh.ed.nodes.transactions.writers.IFrequentPatternSetWriter;
-import pl.edu.agh.ed.nodes.transactions.writers.impl.FrequentPatternSetWriter;
+import pl.edu.agh.ed.algorithm.IFrequentSequencesExtractor;
+import pl.edu.agh.ed.model.frequent.sequence.IFrequentSequenceSet;
+import pl.edu.agh.ed.model.sequence.ISequenceSet;
+import pl.edu.agh.ed.nodes.transactions.readers.ISequenceSetReader;
+import pl.edu.agh.ed.nodes.transactions.readers.impl.OrderedStringSequenceSetReader;
+import pl.edu.agh.ed.nodes.transactions.readers.impl.StringSequenceSetReader;
+import pl.edu.agh.ed.nodes.transactions.writers.IFrequentSequenceSetWriter;
+import pl.edu.agh.ed.nodes.transactions.writers.impl.FrequentSequenceSetWriter;
 
 /**
  * This is the model implementation of Apriori.
@@ -38,11 +37,11 @@ import pl.edu.agh.ed.nodes.transactions.writers.impl.FrequentPatternSetWriter;
  *
  * @author 
  */
-public class AprioriNodeModel extends NodeModel {
+public class FrequentSequencesExtractorNodeModel extends NodeModel {
     
     @SuppressWarnings("unused")
 	private static final NodeLogger logger = NodeLogger
-            .getLogger(AprioriNodeModel.class);
+            .getLogger(FrequentSequencesExtractorNodeModel.class);
     
     private static final DataTableSpec OUTPUT_DATA_TABLE_SPEC = new DataTableSpec(
     		new DataColumnSpecCreator("Pattern", StringCell.TYPE).createSpec(),
@@ -50,7 +49,7 @@ public class AprioriNodeModel extends NodeModel {
     		new DataColumnSpecCreator("Relative support", DoubleCell.TYPE).createSpec()
 		);
     
-    protected AprioriNodeModel() {
+    protected FrequentSequencesExtractorNodeModel() {
         super(1, 1);
     }
 
@@ -60,31 +59,31 @@ public class AprioriNodeModel extends NodeModel {
     @Override
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
             final ExecutionContext exec) throws Exception {
-    	ITransactionSetReader<IItem> reader;
-    	if (AprioriNodeConstans.READ_AS_ORDERED_SETTINGS.getBooleanValue()) {
-    		reader = new OrderedStringTransactionSetReader();
+    	ISequenceSetReader reader;
+    	if (FrequentSequencesExtractorNodeConstans.READ_AS_ORDERED_SETTINGS.getBooleanValue()) {
+    		reader = new OrderedStringSequenceSetReader();
     	} else {
-    		reader = new StringTransactionSetReader();
+    		reader = new StringSequenceSetReader();
     	}
     	
-    	ITransactionSet<IItem> transactionSet = 
-			reader.readTransactionSet(StreamSupport.stream(inData[0].spliterator(), false)
+    	ISequenceSet sequenceSet = 
+			reader.readSequenceSet(StreamSupport.stream(inData[0].spliterator(), false)
     			.map(row -> row.getCell(0))
     			.map(cell -> (StringValue)cell)
     			.map(cell -> cell.getStringValue())
     			.collect(Collectors.toList()));
-    	IFrequentPatternsExtractor<IItem> extractor = AprioriNodeConstans.createExtractor();
-    	IFrequentPatternSet<IItem> patterns;
-    	if (AprioriNodeConstans.IS_RELATIVE_SETTINGS.getBooleanValue()) {
-    		patterns = extractor.extract(transactionSet, AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.getDoubleValue());
+    	IFrequentSequencesExtractor extractor = FrequentSequencesExtractorNodeConstans.createExtractor();
+    	IFrequentSequenceSet sequences;
+    	if (FrequentSequencesExtractorNodeConstans.IS_RELATIVE_SETTINGS.getBooleanValue()) {
+    		sequences = extractor.extract(sequenceSet, FrequentSequencesExtractorNodeConstans.RELATIVE_SUPPORT_SETTINGS.getDoubleValue());
     	} else {
-    		patterns = extractor.extract(transactionSet, AprioriNodeConstans.SUPPORT_SETTINGS.getIntValue());
+    		sequences = extractor.extract(sequenceSet, FrequentSequencesExtractorNodeConstans.SUPPORT_SETTINGS.getIntValue());
     	}
     	
-    	IFrequentPatternSetWriter<IItem> writer = new FrequentPatternSetWriter<>();
+    	IFrequentSequenceSetWriter writer = new FrequentSequenceSetWriter();
 
     	BufferedDataContainer dataTable = exec.createDataContainer(OUTPUT_DATA_TABLE_SPEC);
-        return new BufferedDataTable[]{writer.write(patterns, dataTable)};
+        return new BufferedDataTable[]{writer.write(sequences, dataTable)};
     }
 
     /**
@@ -118,10 +117,11 @@ public class AprioriNodeModel extends NodeModel {
      */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
-    	AprioriNodeConstans.SUPPORT_SETTINGS.saveSettingsTo(settings);
-    	AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.saveSettingsTo(settings);
-    	AprioriNodeConstans.IS_RELATIVE_SETTINGS.saveSettingsTo(settings);
-    	AprioriNodeConstans.READ_AS_ORDERED_SETTINGS.saveSettingsTo(settings);
+    	FrequentSequencesExtractorNodeConstans.SUPPORT_SETTINGS.saveSettingsTo(settings);
+    	FrequentSequencesExtractorNodeConstans.RELATIVE_SUPPORT_SETTINGS.saveSettingsTo(settings);
+    	FrequentSequencesExtractorNodeConstans.IS_RELATIVE_SETTINGS.saveSettingsTo(settings);
+    	FrequentSequencesExtractorNodeConstans.READ_AS_ORDERED_SETTINGS.saveSettingsTo(settings);
+    	FrequentSequencesExtractorNodeConstans.ALGORITHM_SETTINGS.saveSettingsTo(settings);
     }
 
     /**
@@ -130,10 +130,11 @@ public class AprioriNodeModel extends NodeModel {
     @Override
     protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-    	AprioriNodeConstans.SUPPORT_SETTINGS.loadSettingsFrom(settings);
-    	AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.loadSettingsFrom(settings);
-    	AprioriNodeConstans.IS_RELATIVE_SETTINGS.loadSettingsFrom(settings);
-    	AprioriNodeConstans.READ_AS_ORDERED_SETTINGS.loadSettingsFrom(settings);
+    	FrequentSequencesExtractorNodeConstans.SUPPORT_SETTINGS.loadSettingsFrom(settings);
+    	FrequentSequencesExtractorNodeConstans.RELATIVE_SUPPORT_SETTINGS.loadSettingsFrom(settings);
+    	FrequentSequencesExtractorNodeConstans.IS_RELATIVE_SETTINGS.loadSettingsFrom(settings);
+    	FrequentSequencesExtractorNodeConstans.READ_AS_ORDERED_SETTINGS.loadSettingsFrom(settings);
+    	FrequentSequencesExtractorNodeConstans.ALGORITHM_SETTINGS.loadSettingsFrom(settings);
     }
 
     /**
@@ -142,10 +143,11 @@ public class AprioriNodeModel extends NodeModel {
     @Override
     protected void validateSettings(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-    	AprioriNodeConstans.SUPPORT_SETTINGS.validateSettings(settings);
-    	AprioriNodeConstans.RELATIVE_SUPPORT_SETTINGS.validateSettings(settings);
-    	AprioriNodeConstans.IS_RELATIVE_SETTINGS.validateSettings(settings);
-    	AprioriNodeConstans.READ_AS_ORDERED_SETTINGS.validateSettings(settings);
+    	FrequentSequencesExtractorNodeConstans.SUPPORT_SETTINGS.validateSettings(settings);
+    	FrequentSequencesExtractorNodeConstans.RELATIVE_SUPPORT_SETTINGS.validateSettings(settings);
+    	FrequentSequencesExtractorNodeConstans.IS_RELATIVE_SETTINGS.validateSettings(settings);
+    	FrequentSequencesExtractorNodeConstans.READ_AS_ORDERED_SETTINGS.validateSettings(settings);
+    	FrequentSequencesExtractorNodeConstans.ALGORITHM_SETTINGS.validateSettings(settings);
     }
     
     /**

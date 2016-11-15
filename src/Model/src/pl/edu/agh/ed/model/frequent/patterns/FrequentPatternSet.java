@@ -1,4 +1,4 @@
-package pl.edu.agh.ed.model.patterns;
+package pl.edu.agh.ed.model.frequent.patterns;
 
 import java.util.Collections;
 import java.util.HashSet;

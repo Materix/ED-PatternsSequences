@@ -28,7 +28,7 @@ public class StringTransactionSetReader implements ITransactionSetReader<IItem> 
 		return new TransactionSet<>(items.values().stream().collect(Collectors.toMap(IItem::getId, i -> i)),
 			list.stream().map(s -> s.split(" "))
 				.map(Arrays::stream)
-				.map(s -> s.map(i -> items.get(i)).collect(Collectors.toList()))
+				.map(s -> s.map(i -> items.get(i)).distinct().collect(Collectors.toList()))
 				.map(i -> new Transaction<>(transactionIdIterator.next(), i))
 				.collect(Collectors.toSet())
 		);

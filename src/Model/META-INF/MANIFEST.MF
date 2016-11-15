@@ -6,7 +6,9 @@ Bundle-Version: 1.0.0.qualifier
 Export-Package: pl.edu.agh.ed.algorithm,
  pl.edu.agh.ed.model,
  pl.edu.agh.ed.model.associationRules,
- pl.edu.agh.ed.model.patterns,
+ pl.edu.agh.ed.model.frequent.patterns,
+ pl.edu.agh.ed.model.frequent.sequence,
+ pl.edu.agh.ed.model.sequence,
  pl.edu.agh.ed.model.transactions
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -1,4 +1,4 @@
-package pl.edu.agh.ed.nodes.frequentPatterns.apriori;
+package pl.edu.agh.ed.nodes.frequentSequences;
 
 import org.knime.core.node.NodeDialogPane;
 import org.knime.core.node.NodeFactory;
@@ -10,15 +10,15 @@ import org.knime.core.node.NodeView;
  *
  * @author 
  */
-public class AprioriNodeFactory 
-        extends NodeFactory<AprioriNodeModel> {
+public class FrequentSequencesExtractorNodeFactory 
+        extends NodeFactory<FrequentSequencesExtractorNodeModel> {
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public AprioriNodeModel createNodeModel() {
-        return new AprioriNodeModel();
+    public FrequentSequencesExtractorNodeModel createNodeModel() {
+        return new FrequentSequencesExtractorNodeModel();
     }
 
     /**
@@ -33,9 +33,9 @@ public class AprioriNodeFactory
      * {@inheritDoc}
      */
     @Override
-    public NodeView<AprioriNodeModel> createNodeView(final int viewIndex,
-            final AprioriNodeModel nodeModel) {
-        return new AprioriNodeView(nodeModel);
+    public NodeView<FrequentSequencesExtractorNodeModel> createNodeView(final int viewIndex,
+            final FrequentSequencesExtractorNodeModel nodeModel) {
+        return new FrequentSequencesExtractorNodeView(nodeModel);
     }
 
     /**
@@ -51,7 +51,7 @@ public class AprioriNodeFactory
      */
     @Override
     public NodeDialogPane createNodeDialogPane() {
-        return new AprioriNodeDialog();
+        return new FrequentSequencesExtractorNodeDialog();
     }
 
 }

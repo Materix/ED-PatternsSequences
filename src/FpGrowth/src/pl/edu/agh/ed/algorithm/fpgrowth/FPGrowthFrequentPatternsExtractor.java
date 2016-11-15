@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 import pl.edu.agh.ed.algorithm.IFrequentPatternsExtractor;
 import pl.edu.agh.ed.algorithm.fpgrowth.impl.FPGrowth;
 import pl.edu.agh.ed.model.IItem;
-import pl.edu.agh.ed.model.patterns.FrequentPattern;
-import pl.edu.agh.ed.model.patterns.FrequentPatternSet;
-import pl.edu.agh.ed.model.patterns.IFrequentPatternSet;
+import pl.edu.agh.ed.model.frequent.patterns.FrequentPattern;
+import pl.edu.agh.ed.model.frequent.patterns.FrequentPatternSet;
+import pl.edu.agh.ed.model.frequent.patterns.IFrequentPatternSet;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
 public class FPGrowthFrequentPatternsExtractor<T extends IItem> implements IFrequentPatternsExtractor<T> {
