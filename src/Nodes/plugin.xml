@@ -25,6 +25,10 @@
     <node
             category-path="/"
             factory-class="pl.edu.agh.ed.nodes.closedFrequentPatterns.ClosedFrequentPatternExtractorNodeFactory"/>
+    <node
+          deprecated="false"
+          factory-class="pl.edu.agh.ed.nodes.closedFrequentSequences.ClosedFrequentSequencesExtractorNodeFactory">
+    </node>
    </extension>
    
 </plugin>
