@@ -7,7 +7,12 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: Model;bundle-version="1.0.0",
  SPMF;bundle-version="1.0.0"
-Export-Package: pl.edu.agh.ed.algorithm.frequent.patterns.spmf,
+Export-Package: pl.edu.agh.ed.algorithm.frequent.patterns.closed.spmf.aprioriClose,
+ pl.edu.agh.ed.algorithm.frequent.patterns.closed.spmf.charm,
+ pl.edu.agh.ed.algorithm.frequent.patterns.closed.spmf.dCharm,
+ pl.edu.agh.ed.algorithm.frequent.patterns.closed.spmf.fpclose,
+ pl.edu.agh.ed.algorithm.frequent.patterns.closed.spmf.lcm,
+ pl.edu.agh.ed.algorithm.frequent.patterns.spmf,
  pl.edu.agh.ed.algorithm.frequent.patterns.spmf.eclat,
  pl.edu.agh.ed.algorithm.frequent.patterns.spmf.fin,
  pl.edu.agh.ed.algorithm.frequent.patterns.spmf.fpgrowth,
@@ -17,7 +22,10 @@ Export-Package: pl.edu.agh.ed.algorithm.frequent.patterns.spmf,
  pl.edu.agh.ed.algorithm.frequent.patterns.spmf.prepostplus,
  pl.edu.agh.ed.algorithm.frequent.patterns.spmf.relim,
  pl.edu.agh.ed.algorithm.frequent.sequences.spmf,
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf.cmspade,
  pl.edu.agh.ed.algorithm.frequent.sequences.spmf.cmspam,
  pl.edu.agh.ed.algorithm.frequent.sequences.spmf.gsp,
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf.lapin,
  pl.edu.agh.ed.algorithm.frequent.sequences.spmf.prefixSpan,
- pl.edu.agh.ed.algorithm.frequent.sequences.spmf.spade
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf.spade,
+ pl.edu.agh.ed.algorithm.frequent.sequences.spmf.spam

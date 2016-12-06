@@ -1,0 +1,84 @@
+
+{
+    "version":"3.2.1.v201608190927",
+    "created":"2016-10-18 20:46",
+    "nodestats":{
+        "nodes":[
+            {
+                "id":"pl.agh.edu.ed.TestNodeFactory#Test",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":3,
+                "successor":"n/a"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.frequentPatterns.apriori.AprioriNodeFactory#Apriori",
+                "nrexecs":24,
+                "nrfails":4,
+                "exectime":138505,
+                "nrcreated":5,
+                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"org.knime.base.node.io.filereader.FileReaderNodeFactory#File Reader",
+                "nrexecs":11,
+                "nrfails":0,
+                "exectime":680,
+                "nrcreated":4,
+                "successor":"pl.edu.agh.ed.nodes.frequentSequences.FrequentSequencesExtractorNodeFactory#Frequent Sequence Extractor"
+            },
+            {
+                "id":"org.knime.base.node.io.csvreader.CSVReaderNodeFactory#CSV Reader",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":1,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table",
+                "nrexecs":73,
+                "nrfails":0,
+                "exectime":184,
+                "nrcreated":5,
+                "successor":"n/a"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.frequentPatterns.FrequentPatternExtractorNodeFactory#Frequent Pattern Extractor",
+                "nrexecs":27,
+                "nrfails":0,
+                "exectime":165839,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.frequentSequences.FrequentSequencesExtractorNodeFactory#Frequent Sequence Extractor",
+                "nrexecs":28,
+                "nrfails":12,
+                "exectime":2059525,
+                "nrcreated":2,
+                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.closedFrequentPatterns.ClosedFrequentPatternExtractorNodeFactory#Closed Frequent Pattern Extractor",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":5,
+                "successor":"n/a"
+            }
+        ],
+        "metaNodes":{
+        },
+        "wrappedNodes":{
+        }
+    },
+    "uptime":746470,
+    "workflowsOpened":2,
+    "remoteWorkflowsOpened":0,
+    "launches":30,
+    "timeSinceLastStart":3887554,
+    "crashes":4,
+    "properlyShutDown":true
+}

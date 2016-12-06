@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.AlgoSPADE;
 import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.candidatePatternsGeneration.CandidateGenerator;
 import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.candidatePatternsGeneration.CandidateGenerator_Qualitative;
@@ -22,7 +21,6 @@ import pl.edu.agh.ed.model.frequent.sequence.FrequentSequence;
 import pl.edu.agh.ed.model.frequent.sequence.FrequentSequenceSet;
 import pl.edu.agh.ed.model.frequent.sequence.IFrequentSequence;
 import pl.edu.agh.ed.model.frequent.sequence.IFrequentSequenceSet;
-import pl.edu.agh.ed.model.sequence.ISequence;
 import pl.edu.agh.ed.model.sequence.ISequenceSet;
 
 public class SPADEFrequentSequenceExtractor implements IFrequentSequencesExtractor {
@@ -56,7 +54,6 @@ public class SPADEFrequentSequenceExtractor implements IFrequentSequencesExtract
 	        SequenceDatabase sequenceDatabase = new SequenceDatabase(abstractionCreator, idListCreator);	        
 			sequenceDatabase.loadFile(tempInputFile.toString(), minRelativeSupport);
 
-			
 			AlgoSPADE algoSPADE = new AlgoSPADE(minRelativeSupport, false, null);
 			algoSPADE.runAlgorithm(sequenceDatabase, candidateGenerator, true, false, tempOutputFile.toString(), false);
 			

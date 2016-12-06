@@ -14,6 +14,7 @@ import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
 public class FPGrowthFrequentPatternsExtractor<T extends IItem> implements IFrequentPatternsExtractor<T> {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public IFrequentPatternSet<T> extract(ITransactionSet<T> transactionSet, int minSupport) {
 		return new FrequentPatternSet<>(transactionSet, new FPGrowth((ITransactionSet<IItem>) transactionSet, minSupport)

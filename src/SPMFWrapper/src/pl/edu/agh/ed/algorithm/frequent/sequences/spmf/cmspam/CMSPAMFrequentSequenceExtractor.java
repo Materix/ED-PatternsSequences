@@ -6,15 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.AlgoSPADE;
-import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.candidatePatternsGeneration.CandidateGenerator;
-import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.candidatePatternsGeneration.CandidateGenerator_Qualitative;
-import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.dataStructures.creators.AbstractionCreator;
-import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.dataStructures.creators.AbstractionCreator_Qualitative;
-import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.dataStructures.database.SequenceDatabase;
-import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.idLists.creators.IdListCreator;
-import ca.pfv.spmf.algorithms.sequentialpatterns.spade_spam_AGP.idLists.creators.IdListCreator_StandardMap;
 import ca.pfv.spmf.algorithms.sequentialpatterns.spam.AlgoCMSPAM;
 import pl.edu.agh.ed.algorithm.IFrequentSequencesExtractor;
 import pl.edu.agh.ed.model.Group;
@@ -23,7 +14,6 @@ import pl.edu.agh.ed.model.frequent.sequence.FrequentSequence;
 import pl.edu.agh.ed.model.frequent.sequence.FrequentSequenceSet;
 import pl.edu.agh.ed.model.frequent.sequence.IFrequentSequence;
 import pl.edu.agh.ed.model.frequent.sequence.IFrequentSequenceSet;
-import pl.edu.agh.ed.model.sequence.ISequence;
 import pl.edu.agh.ed.model.sequence.ISequenceSet;
 
 public class CMSPAMFrequentSequenceExtractor implements IFrequentSequencesExtractor {

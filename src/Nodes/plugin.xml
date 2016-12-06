@@ -16,12 +16,15 @@
    
    <extension
          point="org.knime.workbench.repository.nodes">
-      <node
+	<node
             category-path="/"
             factory-class="pl.edu.agh.ed.nodes.frequentPatterns.FrequentPatternExtractorNodeFactory"/>
     <node
             category-path="/"
             factory-class="pl.edu.agh.ed.nodes.frequentSequences.FrequentSequencesExtractorNodeFactory"/>
+    <node
+            category-path="/"
+            factory-class="pl.edu.agh.ed.nodes.closedFrequentPatterns.ClosedFrequentPatternExtractorNodeFactory"/>
    </extension>
    
 </plugin>
