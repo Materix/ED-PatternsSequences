@@ -22,11 +22,11 @@
             },
             {
                 "id":"org.knime.base.node.io.filereader.FileReaderNodeFactory#File Reader",
-                "nrexecs":13,
+                "nrexecs":15,
                 "nrfails":0,
-                "exectime":836,
+                "exectime":879,
                 "nrcreated":4,
-                "successor":"pl.edu.agh.ed.nodes.closedFrequentPatterns.ClosedFrequentPatternExtractorNodeFactory#Closed Frequent Pattern Extractor"
+                "successor":"pl.edu.agh.ed.nodes.closedFrequentSequences.ClosedFrequentSequencesExtractorNodeFactory#Closed Frequent Sequence Extractor"
             },
             {
                 "id":"org.knime.base.node.io.csvreader.CSVReaderNodeFactory#CSV Reader",
@@ -38,9 +38,9 @@
             },
             {
                 "id":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table",
-                "nrexecs":81,
+                "nrexecs":89,
                 "nrfails":0,
-                "exectime":199,
+                "exectime":209,
                 "nrcreated":5,
                 "successor":"n/a"
             },
@@ -54,9 +54,9 @@
             },
             {
                 "id":"pl.edu.agh.ed.nodes.frequentSequences.FrequentSequencesExtractorNodeFactory#Frequent Sequence Extractor",
-                "nrexecs":28,
+                "nrexecs":32,
                 "nrfails":12,
-                "exectime":2059525,
+                "exectime":2060352,
                 "nrcreated":2,
                 "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
             },
@@ -65,7 +65,15 @@
                 "nrexecs":5,
                 "nrfails":0,
                 "exectime":374,
-                "nrcreated":5,
+                "nrcreated":6,
+                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.closedFrequentSequences.ClosedFrequentSequencesExtractorNodeFactory#Closed Frequent Sequence Extractor",
+                "nrexecs":4,
+                "nrfails":0,
+                "exectime":943,
+                "nrcreated":4,
                 "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
             }
         ],
@@ -74,11 +82,11 @@
         "wrappedNodes":{
         }
     },
-    "uptime":779176,
-    "workflowsOpened":2,
+    "uptime":746122,
+    "workflowsOpened":10,
     "remoteWorkflowsOpened":0,
-    "launches":31,
-    "timeSinceLastStart":1760367,
+    "launches":33,
+    "timeSinceLastStart":293032,
     "crashes":4,
     "properlyShutDown":true
 }

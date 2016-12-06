@@ -386,3 +386,20 @@ Command-line arguments:  -application org.knime.product.KNIME_APPLICATION -data 
 !MESSAGE Save operation warnings.
 !SUBENTRY 1 org.eclipse.core.resources 2 234 2016-12-04 00:16:25.318
 !MESSAGE The project description file (.project) for 'FrequentPatterns(2)' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SESSION 2016-12-06 15:51:16.912 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pl_PL
+Framework arguments:  -application org.knime.product.KNIME_APPLICATION
+Command-line arguments:  -application org.knime.product.KNIME_APPLICATION -data F:\Studia\Sem2\ED\workspace/../repository/runtime-KNIME -dev file:F:/Studia/Sem2/ED/workspace/.metadata/.plugins/org.eclipse.pde.core/KNIME/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.core.resources 2 2 2016-12-06 15:52:03.053
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2016-12-06 15:52:03.053
+!MESSAGE The project description file (.project) for 'FrequentSequences(2)' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.help.base 4 4 2016-12-06 15:52:11.437
+!MESSAGE Help documentation could not be indexed completely.
+!SUBENTRY 1 org.eclipse.help.base 4 4 2016-12-06 15:52:11.438
+!MESSAGE Help document /org.knime.workbench.help/html/toc.html cannot be opened.
