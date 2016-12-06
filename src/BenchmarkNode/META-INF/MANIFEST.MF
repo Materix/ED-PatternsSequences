@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BenchmarkNode
+Bundle-SymbolicName: pl.edu.agh.ed.nodes.benchmark;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: pl.edu.agh.ed.nodes.benchmark.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.knime.workbench.core,
+ org.knime.workbench.repository,
+ org.knime.base,
+ Apriori;bundle-version="1.0.0",
+ Model;bundle-version="1.0.0",
+ FpGrowth;bundle-version="1.0.0",
+ SPMFWrapper,
+ pl.edu.agh.ed.nodes;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy

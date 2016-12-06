@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.knime.workbench.repository.nodes">
+      <node
+            deprecated="false"
+            factory-class="pl.edu.agh.ed.nodes.benchmark.frequentPatterns.BenchmarkFrequentPatternExtractorNodeFactory">
+      </node>
+      <node
+            deprecated="false"
+            factory-class="pl.edu.agh.ed.nodes.benchmark.frequentSequences.BenchmarkFrequentSequencesExtractorNodeFactory">
+      </node>
+      <node
+            deprecated="false"
+            factory-class="pl.edu.agh.ed.nodes.benchmark.frequentPatterns.closed.BenchmarkClosedFrequentPatternExtractorNodeFactory">
+      </node>
+      <node
+            deprecated="false"
+            factory-class="pl.edu.agh.ed.nodes.benchmark.frequentSequences.closed.BenchmarkClosedFrequentSequencesExtractorNodeFactory">
+      </node>
+   </extension>
+
+</plugin>

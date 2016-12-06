@@ -22,11 +22,11 @@
             },
             {
                 "id":"org.knime.base.node.io.filereader.FileReaderNodeFactory#File Reader",
-                "nrexecs":15,
+                "nrexecs":21,
                 "nrfails":0,
-                "exectime":879,
+                "exectime":1107,
                 "nrcreated":4,
-                "successor":"pl.edu.agh.ed.nodes.closedFrequentSequences.ClosedFrequentSequencesExtractorNodeFactory#Closed Frequent Sequence Extractor"
+                "successor":"pl.edu.agh.ed.nodes.benchmark.frequentSequences.closed.BenchmarkClosedFrequentSequencesExtractorNodeFactory#Benchmark Closed Frequent Sequences Extractors"
             },
             {
                 "id":"org.knime.base.node.io.csvreader.CSVReaderNodeFactory#CSV Reader",
@@ -38,43 +38,107 @@
             },
             {
                 "id":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table",
-                "nrexecs":89,
+                "nrexecs":123,
                 "nrfails":0,
-                "exectime":209,
+                "exectime":444,
                 "nrcreated":5,
                 "successor":"n/a"
             },
             {
                 "id":"pl.edu.agh.ed.nodes.frequentPatterns.FrequentPatternExtractorNodeFactory#Frequent Pattern Extractor",
-                "nrexecs":30,
+                "nrexecs":39,
                 "nrfails":0,
-                "exectime":166356,
+                "exectime":167122,
                 "nrcreated":1,
                 "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
             },
             {
                 "id":"pl.edu.agh.ed.nodes.frequentSequences.FrequentSequencesExtractorNodeFactory#Frequent Sequence Extractor",
-                "nrexecs":32,
+                "nrexecs":39,
                 "nrfails":12,
-                "exectime":2060352,
+                "exectime":2061137,
                 "nrcreated":2,
-                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+                "successor":"org.knime.testing.internal.nodes.differ.DifferenceCheckerNodeFactory#Table Difference Checker"
             },
             {
                 "id":"pl.edu.agh.ed.nodes.closedFrequentPatterns.ClosedFrequentPatternExtractorNodeFactory#Closed Frequent Pattern Extractor",
-                "nrexecs":5,
+                "nrexecs":10,
                 "nrfails":0,
-                "exectime":374,
+                "exectime":1130,
                 "nrcreated":6,
                 "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
             },
             {
                 "id":"pl.edu.agh.ed.nodes.closedFrequentSequences.ClosedFrequentSequencesExtractorNodeFactory#Closed Frequent Sequence Extractor",
-                "nrexecs":4,
+                "nrexecs":12,
                 "nrfails":0,
-                "exectime":943,
+                "exectime":1789,
                 "nrcreated":4,
                 "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"org.knime.base.node.io.tablecreator.TableCreator2NodeFactory#Table Creator",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":1,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.testing.internal.nodes.differ.DifferenceCheckerNodeFactory#Table Difference Checker",
+                "nrexecs":0,
+                "nrfails":2,
+                "exectime":6,
+                "nrcreated":1,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.testing.node.config.TestConfigNodeFactory#Testflow Configuration",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":1,
+                "successor":"n/a"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.benchmark.frequentPatterns.BenchmarkFrequentPatternExtractorNodeFactory#Benchmark Frequent Patterns Extractors",
+                "nrexecs":2,
+                "nrfails":0,
+                "exectime":951,
+                "nrcreated":5,
+                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.benchmark.frequentPatterns.closed.BenchmarkClosedFrequentPatternExtractorNodeFactory#Benchmark Closed Frequent Patterns Extractors",
+                "nrexecs":1,
+                "nrfails":0,
+                "exectime":172,
+                "nrcreated":2,
+                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.benchmark.frequentSequences.BenchmarkFrequentSequencesExtractorNodeFactory#Benchmark Frequent Sequences Extractors",
+                "nrexecs":1,
+                "nrfails":0,
+                "exectime":560,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"pl.edu.agh.ed.nodes.benchmark.frequentSequences.closed.BenchmarkClosedFrequentSequencesExtractorNodeFactory#Benchmark Closed Frequent Sequences Extractors",
+                "nrexecs":1,
+                "nrfails":0,
+                "exectime":423,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.viz.table.TableNodeFactory#Interactive Table"
+            },
+            {
+                "id":"org.knime.base.node.viz.property.color.ColorManager2NodeFactory#Color Manager",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":1,
+                "successor":"n/a"
             }
         ],
         "metaNodes":{
@@ -82,11 +146,11 @@
         "wrappedNodes":{
         }
     },
-    "uptime":746122,
-    "workflowsOpened":10,
+    "uptime":966881,
+    "workflowsOpened":22,
     "remoteWorkflowsOpened":0,
-    "launches":33,
-    "timeSinceLastStart":293032,
+    "launches":40,
+    "timeSinceLastStart":3366674,
     "crashes":4,
     "properlyShutDown":true
 }

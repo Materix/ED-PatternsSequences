@@ -6,7 +6,7 @@
 <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
 </config>
 <config key="model">
-<entry key="DataURL" type="xstring" value="file:/F:/Studia/Sem2/ED/eclipse/../repository/data/sequence.sequences"/>
+<entry key="DataURL" type="xstring" value="file:/F:/Studia/Sem9/ED/eclipse/../repository/data/sequence.sequences"/>
 <config key="Delimiters">
 <config key="Delim0">
 <entry key="pattern" type="xstring" value="%%00010"/>
@@ -108,6 +108,6 @@
 </config>
 <config key="filestores">
 <entry key="file_store_location" type="xstring" isnull="true" value=""/>
-<entry key="file_store_id" type="xstring" value="e8c26a3d-654b-4154-b7b5-8548ed6c7b20"/>
+<entry key="file_store_id" type="xstring" value="5064b160-7a3c-4279-9b73-2a014ec7fa5b"/>
 </config>
 </config>

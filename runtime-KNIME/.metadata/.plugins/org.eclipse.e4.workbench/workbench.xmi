@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_GHTrkLBAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_GHTrkbBAEeajCbQjFQq5tQ" bindingContexts="_GHTtp7BAEeajCbQjFQq5tQ">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/ClosedFrequentSequences/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/ClosedFrequentSequences/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/FrequentPatterns/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/FrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/FrequentSequences/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/FrequentSequences/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/ClosedFrequentPatterns/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/ClosedFrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/KNIME_project/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/KNIME_project/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/ClosedFrequentSequences/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/ClosedFrequentSequences/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/Benchmark/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/Benchmark/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/FrequentPatterns/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/FrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/ClosedFrequentPatterns/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/ClosedFrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/FrequentSequences/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/FrequentSequences/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; tooltip=&quot;knime://LOCAL/KNIME_project/workflow.knime&quot;>&#xD;&#xA;&lt;persistable uri=&quot;knime://LOCAL/KNIME_project/workflow.knime&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_GHTrkbBAEeajCbQjFQq5tQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_GHTrkrBAEeajCbQjFQq5tQ" x="0" y="0" width="1024" height="768">
@@ -42,6 +42,7 @@
           <children xsi:type="basic:PartSashContainer" xmi:id="_GHTrlbBAEeajCbQjFQq5tQ" selectedElement="_GHTrnrBAEeajCbQjFQq5tQ" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_GHTrlrBAEeajCbQjFQq5tQ" containerData="3000" selectedElement="_GHTrmbBAEeajCbQjFQq5tQ">
               <children xsi:type="basic:PartStack" xmi:id="_GHTrl7BAEeajCbQjFQq5tQ" elementId="org.knime.workbench.explorer.viewMStack" containerData="2418" selectedElement="_GHTrmLBAEeajCbQjFQq5tQ">
+                <tags>noFocus</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_GHTrmLBAEeajCbQjFQq5tQ" elementId="org.knime.workbench.explorer.view" ref="_GHTr_LBAEeajCbQjFQq5tQ"/>
               </children>
               <children xsi:type="basic:PartSashContainer" xmi:id="_GHTrmbBAEeajCbQjFQq5tQ" containerData="7582" selectedElement="_GHTrnLBAEeajCbQjFQq5tQ">
@@ -49,7 +50,6 @@
                   <children xsi:type="advanced:Placeholder" xmi:id="_GHTrm7BAEeajCbQjFQq5tQ" elementId="org.knime.workbench.workflowcoach.view" ref="_GHTsNLBAEeajCbQjFQq5tQ"/>
                 </children>
                 <children xsi:type="basic:PartStack" xmi:id="_GHTrnLBAEeajCbQjFQq5tQ" elementId="org.knime.workbench.repository.view.RepositoryViewMStack" containerData="8000" selectedElement="_GHTrnbBAEeajCbQjFQq5tQ">
-                  <tags>noFocus</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_GHTrnbBAEeajCbQjFQq5tQ" elementId="org.knime.workbench.repository.view.RepositoryView" ref="_GHTsDrBAEeajCbQjFQq5tQ">
                     <tags>NoClose</tags>
                   </children>
@@ -63,7 +63,7 @@
                   <children xsi:type="advanced:Placeholder" xmi:id="_GHTrorBAEeajCbQjFQq5tQ" elementId="org.knime.workbench.helpview" toBeRendered="false" ref="_GHTsMbBAEeajCbQjFQq5tQ"/>
                 </children>
               </children>
-              <children xsi:type="basic:PartSashContainer" xmi:id="_GHTro7BAEeajCbQjFQq5tQ" containerData="3000" selectedElement="_GHTrpLBAEeajCbQjFQq5tQ" horizontal="true">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_GHTro7BAEeajCbQjFQq5tQ" containerData="3000" selectedElement="_GHTrprBAEeajCbQjFQq5tQ" horizontal="true">
                 <children xsi:type="basic:PartStack" xmi:id="_GHTrpLBAEeajCbQjFQq5tQ" elementId="org.eclipse.ui.views.ContentOutlineMStack" containerData="3000" selectedElement="_GHTrpbBAEeajCbQjFQq5tQ">
                   <children xsi:type="advanced:Placeholder" xmi:id="_GHTrpbBAEeajCbQjFQq5tQ" elementId="org.eclipse.ui.views.ContentOutline" ref="_GHTsLrBAEeajCbQjFQq5tQ"/>
                 </children>
@@ -100,57 +100,26 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_GHTr9bBAEeajCbQjFQq5tQ" elementId="org.eclipse.ui.editorss" selectedElement="_GHTr9rBAEeajCbQjFQq5tQ">
-      <children xsi:type="basic:PartStack" xmi:id="_GHTr9rBAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_Cef3QLvEEeayeZhSNskUPQ">
+      <children xsi:type="basic:PartStack" xmi:id="_GHTr9rBAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_n1BuYLv8Eea2kuyMM8K6fw">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
         <tags>active</tags>
-        <children xsi:type="basic:Part" xmi:id="_GHTr97BAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="0: FrequentPatterns" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
+        <children xsi:type="basic:Part" xmi:id="_INNfALvvEeaS5IONpCO6dA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="0: FrequentPatterns" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;0: FrequentPatterns&quot; title=&quot;0: FrequentPatterns&quot; tooltip=&quot;0: FrequentPatterns&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/FrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.knime.workbench.editor.WorkflowEditor</tags>
           <tags>removeOnHide</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_GHTr-LBAEeajCbQjFQq5tQ" elementId="org.knime.workbench.editor.WorkflowEditor">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.knime.workbench.editor.WorkflowEditor</tags>
-          </menus>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_GHTr-bBAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="3: FrequentSequences" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;3: FrequentSequences&quot; title=&quot;3: FrequentSequences&quot; tooltip=&quot;3: FrequentSequences&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/FrequentSequences/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.knime.workbench.editor.WorkflowEditor</tags>
-          <tags>removeOnHide</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_GHTr-rBAEeajCbQjFQq5tQ" elementId="org.knime.workbench.editor.WorkflowEditor">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.knime.workbench.editor.WorkflowEditor</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_GHTr-7BAEeajCbQjFQq5tQ" elementId="org.knime.workbench.editor.WorkflowEditor">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.knime.workbench.editor.WorkflowEditor</tags>
-          </menus>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_hB-YULmuEeaYzZYPfPTxHw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="0: ClosedFrequentPatterns" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;0: ClosedFrequentPatterns&quot; title=&quot;0: ClosedFrequentPatterns&quot; tooltip=&quot;0: ClosedFrequentPatterns&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/ClosedFrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.knime.workbench.editor.WorkflowEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_Cef3QLvEEeayeZhSNskUPQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="2: ClosedFrequentSequences" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;2: ClosedFrequentSequences&quot; title=&quot;2: ClosedFrequentSequences&quot; tooltip=&quot;2: ClosedFrequentSequences&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/ClosedFrequentSequences/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_n1BuYLv8Eea2kuyMM8K6fw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="0: Benchmark" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;0: Benchmark&quot; title=&quot;0: Benchmark&quot; tooltip=&quot;0: Benchmark&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/Benchmark/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.knime.workbench.editor.WorkflowEditor</tags>
           <tags>removeOnHide</tags>
           <tags>active</tags>
           <tags>activeOnClose</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_JI22cLvEEeayeZhSNskUPQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="3: FrequentSequences" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;3: FrequentSequences&quot; title=&quot;3: FrequentSequences&quot; tooltip=&quot;3: FrequentSequences&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/FrequentSequences/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.knime.workbench.editor.WorkflowEditor</tags>
-          <tags>removeOnHide</tags>
-          <tags>activeOnClose</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_Jac8wLvEEeayeZhSNskUPQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="4: FrequentPatterns" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;4: FrequentPatterns&quot; title=&quot;4: FrequentPatterns&quot; tooltip=&quot;4: FrequentPatterns&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/FrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_qeZkYLv8Eea2kuyMM8K6fw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="3: ClosedFrequentSequences" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;3: ClosedFrequentSequences&quot; title=&quot;3: ClosedFrequentSequences&quot; tooltip=&quot;3: ClosedFrequentSequences&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/ClosedFrequentSequences/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.knime.workbench.editor.WorkflowEditor</tags>
           <tags>removeOnHide</tags>

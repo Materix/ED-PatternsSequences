@@ -6,7 +6,7 @@
 <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
 </config>
 <config key="model">
-<entry key="DataURL" type="xstring" value="file:/F:/Studia/Sem2/ED/eclipse/../repository/data/sequence.sequences"/>
+<entry key="DataURL" type="xstring" value="file:/F:/Studia/Sem9/ED/eclipse/../repository/data/sequence.sequences"/>
 <config key="Delimiters">
 <config key="Delim0">
 <entry key="pattern" type="xstring" value="%%00010"/>
@@ -62,7 +62,7 @@
 <entry key="acceptShortLines" type="xboolean" value="false"/>
 <entry key="uniquifyRowID" type="xboolean" value="false"/>
 <entry key="MaxNumOfRows" type="xlong" value="-1"/>
-<entry key="ColNumDetermLine" type="xint" value="-1"/>
+<entry key="ColNumDetermLine" type="xint" value="2"/>
 <entry key="CharsetName" type="xstring" isnull="true" value=""/>
 <entry key="delimsAtEOLuserVal" type="xboolean" value="false"/>
 <entry key="numOfColumns" type="xint" value="1"/>
@@ -108,6 +108,6 @@
 </config>
 <config key="filestores">
 <entry key="file_store_location" type="xstring" isnull="true" value=""/>
-<entry key="file_store_id" type="xstring" value="19a1ae2d-58a2-4243-aa88-236146f01412"/>
+<entry key="file_store_id" type="xstring" value="7747c6bf-125f-4546-bd67-2de91be23a0f"/>
 </config>
 </config>

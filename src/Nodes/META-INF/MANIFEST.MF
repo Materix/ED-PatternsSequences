@@ -15,6 +15,14 @@ Require-Bundle: org.eclipse.core.runtime,
  FpGrowth;bundle-version="1.0.0",
  SPMFWrapper
 Bundle-ActivationPolicy: lazy
-Export-Package: pl.edu.agh.ed.nodes.frequentPatterns
+Export-Package: pl.edu.agh.ed.nodes,
+ pl.edu.agh.ed.nodes.frequentPatterns,
+ pl.edu.agh.ed.nodes.frequentPatterns.closed,
+ pl.edu.agh.ed.nodes.frequentSequences,
+ pl.edu.agh.ed.nodes.frequentSequences.closed,
+ pl.edu.agh.ed.nodes.transactions.readers,
+ pl.edu.agh.ed.nodes.transactions.readers.impl,
+ pl.edu.agh.ed.nodes.transactions.writers,
+ pl.edu.agh.ed.nodes.transactions.writers.impl
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 
