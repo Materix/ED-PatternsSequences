@@ -94,15 +94,17 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_GHTr9bBAEeajCbQjFQq5tQ" elementId="org.eclipse.ui.editorss" selectedElement="_GHTr9rBAEeajCbQjFQq5tQ">
-      <children xsi:type="basic:PartStack" xmi:id="_GHTr9rBAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_hB-YULmuEeaYzZYPfPTxHw">
+      <children xsi:type="basic:PartStack" xmi:id="_GHTr9rBAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_GHTr97BAEeajCbQjFQq5tQ">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
         <tags>active</tags>
-        <children xsi:type="basic:Part" xmi:id="_GHTr97BAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="0: FrequentPatterns" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;0: FrequentPatterns&quot; title=&quot;0: FrequentPatterns&quot; tooltip=&quot;0: FrequentPatterns&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/FrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_GHTr97BAEeajCbQjFQq5tQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="3: FrequentPatterns" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;3: FrequentPatterns&quot; title=&quot;3: FrequentPatterns&quot; tooltip=&quot;3: FrequentPatterns&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/FrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.knime.workbench.editor.WorkflowEditor</tags>
           <tags>removeOnHide</tags>
+          <tags>active</tags>
+          <tags>activeOnClose</tags>
           <menus xsi:type="menu:PopupMenu" xmi:id="_GHTr-LBAEeajCbQjFQq5tQ" elementId="org.knime.workbench.editor.WorkflowEditor">
             <tags>menuContribution:popup</tags>
             <tags>popup:org.knime.workbench.editor.WorkflowEditor</tags>
@@ -122,13 +124,11 @@
             <tags>popup:org.knime.workbench.editor.WorkflowEditor</tags>
           </menus>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_hB-YULmuEeaYzZYPfPTxHw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="3: ClosedFrequentPatterns" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;3: ClosedFrequentPatterns&quot; title=&quot;3: ClosedFrequentPatterns&quot; tooltip=&quot;3: ClosedFrequentPatterns&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/ClosedFrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_hB-YULmuEeaYzZYPfPTxHw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="0: ClosedFrequentPatterns" iconURI="platform:/plugin/org.knime.workbench.editor/icons/knime.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.knime.workbench.editor.WorkflowEditor&quot; name=&quot;workflow.knime&quot; partName=&quot;0: ClosedFrequentPatterns&quot; title=&quot;0: ClosedFrequentPatterns&quot; tooltip=&quot;0: ClosedFrequentPatterns&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;knime://LOCAL/ClosedFrequentPatterns/workflow.knime&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.knime.workbench.editor.WorkflowEditor</tags>
           <tags>removeOnHide</tags>
-          <tags>active</tags>
-          <tags>activeOnClose</tags>
         </children>
       </children>
     </sharedElements>
