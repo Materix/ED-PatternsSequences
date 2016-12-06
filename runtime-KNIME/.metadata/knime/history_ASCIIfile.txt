@@ -1,5 +1,5 @@
-file:/F:/Studia/Sem9/ED/eclipse/../repository/data/sequence.sequences
 file:/F:/Studia/Sem9/ED/eclipse/../repository/data/transactions.txt
+file:/F:/Studia/Sem9/ED/eclipse/../repository/data/sequence.sequences
 knime://knime.workflow/data.all
 file:/F:/Studia/Sem2/ED/eclipse/../repository/data/sequence.sequences
 file:/F:/Studia/Sem2/ED/eclipse/../repository/data/transactions.txt
