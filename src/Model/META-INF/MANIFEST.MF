@@ -8,6 +8,7 @@ Export-Package: pl.edu.agh.ed.algorithm,
  pl.edu.agh.ed.model.associationRules,
  pl.edu.agh.ed.model.frequent.patterns,
  pl.edu.agh.ed.model.frequent.sequence,
+ pl.edu.agh.ed.model.graph,
  pl.edu.agh.ed.model.sequence,
  pl.edu.agh.ed.model.transactions
 Bundle-ActivationPolicy: lazy
