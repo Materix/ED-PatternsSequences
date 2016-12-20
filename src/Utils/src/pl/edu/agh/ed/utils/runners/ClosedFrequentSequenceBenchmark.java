@@ -89,6 +89,7 @@ public class ClosedFrequentSequenceBenchmark {
 						.getMinSupport(); support -= parameters.getSupportStep()) {
 					print(support, outputTime, outputResultSize, outputMemory);
 					for (IFrequentSequencesExtractor extractor : extractors.values()) {
+						System.runFinalization();
 						System.gc();
 						MemoryLogger.getInstance().reset();
 						MemoryLogger.getInstance().checkMemory();

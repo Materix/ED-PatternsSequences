@@ -1,2 +1,0 @@
-;PrePost+;LCMFreq;PrePost;H-Mine;FPGrowth;Eclat;Apriori;Relim
-0.8;0
