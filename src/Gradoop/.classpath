@@ -3,5 +3,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry exported="true" kind="lib" path="gradoop-flink-0.3.0-20161207.080126-16.jar" sourcepath="gradoop-master.zip"/>
+	<classpathentry kind="lib" path="gradoop-common-0.3.0-20161207.080112-16.jar" sourcepath="gradoop-master.zip"/>
+	<classpathentry kind="lib" path="gradoop-examples-0.3.0-20161207.080138-16.jar" sourcepath="gradoop-master.zip"/>
+	<classpathentry kind="lib" path="flink-hbase_2.11-1.1.2.jar"/>
+	<classpathentry kind="lib" path="flink-gelly_2.11-1.1.2.jar"/>
+	<classpathentry kind="lib" path="force-shading-1.1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

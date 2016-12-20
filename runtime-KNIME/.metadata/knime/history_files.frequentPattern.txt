@@ -1,0 +1,3 @@
+F:\Studia\Sem9\ED\repository\data\transactions\transactionsCount
+F:\Studia\Sem9\ED\data\transaction\transactionCount
+F:\Studia\Sem9\ED\data\transaction

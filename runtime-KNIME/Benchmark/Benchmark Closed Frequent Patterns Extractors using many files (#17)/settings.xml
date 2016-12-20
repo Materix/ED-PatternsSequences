@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<config key="IS_RELATIVE_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="IS_RELATIVE" type="xboolean" value="true"/>
+<config key="SUPPORT_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_integer"/>
+<entry key="EnabledStatus" type="xboolean" value="false"/>
+</config>
+<entry key="SUPPORT" type="xint" value="10"/>
+<config key="RELATIVE_SUPPORT_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_double"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="RELATIVE_SUPPORT" type="xdouble" value="0.1"/>
+<config key="READ_AS_ORDERED_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="READ_AS_ORDERED" type="xboolean" value="true"/>
+<config key="FILES_PATH_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="FILES_PATH" type="xstring" value="F:\Studia\Sem9\ED\repository\data\transactions\transactionsCount"/>
+<config key="ALGORITHMS_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_stringarray"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<config key="ALGORITHMS">
+<entry key="array-size" type="xint" value="5"/>
+<entry key="0" type="xstring" value="FPClose"/>
+<entry key="1" type="xstring" value="dCharm"/>
+<entry key="2" type="xstring" value="Charm"/>
+<entry key="3" type="xstring" value="LCM"/>
+<entry key="4" type="xstring" value="AprioriClose"/>
+</config>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="EXECUTED"/>
+<entry key="factory" type="xstring" value="pl.edu.agh.ed.nodes.benchmark.files.frequentPatterns.closed.FilesBenchmarkClosedFrequentPatternExtractorNodeFactory"/>
+<entry key="node-name" type="xstring" value="Benchmark Closed Frequent Patterns Extractors using many files"/>
+<entry key="node-bundle-name" type="xstring" value="BenchmarkNode"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="pl.edu.agh.ed.nodes.benchmark"/>
+<entry key="node-bundle-vendor" type="xstring" isnull="true" value=""/>
+<entry key="node-bundle-version" type="xstring" value="1.0.0.qualifier"/>
+<entry key="node-feature-name" type="xstring" isnull="true" value=""/>
+<entry key="node-feature-symbolic-name" type="xstring" isnull="true" value=""/>
+<entry key="node-feature-vendor" type="xstring" isnull="true" value=""/>
+<entry key="node-feature-version" type="xstring" value="0.0.0"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Benchmark Closed Frequent Patterns Extractors using many files"/>
+<entry key="hasContent" type="xboolean" value="true"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 5, Cols: 5"/>
+<entry key="port_dir_location" type="xstring" value="port_1"/>
+</config>
+<config key="port_2">
+<entry key="index" type="xint" value="2"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 5, Cols: 5"/>
+<entry key="port_dir_location" type="xstring" value="port_2"/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" value="425270f4-b0ba-4deb-8c1d-d0204683d2bc"/>
+</config>
+</config>

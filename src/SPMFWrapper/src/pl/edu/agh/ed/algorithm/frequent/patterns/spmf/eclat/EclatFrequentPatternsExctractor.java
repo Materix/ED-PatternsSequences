@@ -11,14 +11,16 @@ import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.frequent.patterns.IFrequentPatternSet;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
-public class EclatFrequentPatternsExctractor<T extends IItem> extends AbstractSPMFFrequentPatternsExtractor<T> implements IFrequentPatternsExtractor<T> {
+public class EclatFrequentPatternsExctractor<T extends IItem> extends AbstractSPMFFrequentPatternsExtractor<T>
+		implements IFrequentPatternsExtractor<T> {
 
 	@Override
 	public IFrequentPatternSet<T> extract(ITransactionSet<T> transactionSet, int minSupport) {
 		AlgoEclat algoEclat = new AlgoEclat();
 		try {
 			TransactionDatabase database = createDatabase(transactionSet);
-			Itemsets result = algoEclat.runAlgorithm(null, database, ((double)minSupport) / transactionSet.getTransactions().size(), false);
+			Itemsets result = algoEclat.runAlgorithm(null, database,
+					((double) minSupport) / transactionSet.getTransactions().size(), false);
 			return createFrequentPatterns(transactionSet, result);
 		} catch (IOException e) {
 			e.printStackTrace();

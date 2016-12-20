@@ -3,9 +3,11 @@ package pl.edu.agh.ed.model.graph;
 import java.util.Set;
 
 public interface ILabeledGraph {
-	Set<IVertex> getVertices();
+	int getId();
 
-	Set<IEdge> getEdges();
+	Set<ILabeledVertex> getVertices();
+
+	Set<ILabeledEdge> getEdges();
 
 	Set<ILabel> getLabels();
 

@@ -6,7 +6,7 @@
 <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
 </config>
 <config key="model">
-<entry key="DataURL" type="xstring" value="file:/F:/Studia/Sem9/ED/eclipse/../repository/data/sequence.sequences"/>
+<entry key="DataURL" type="xstring" value="file:/F:/Studia/Sem9/ED/repository/data/sequences.simpleLarge.txt"/>
 <config key="Delimiters">
 <config key="Delim0">
 <entry key="pattern" type="xstring" value="%%00010"/>
@@ -116,12 +116,12 @@
 <entry key="index" type="xint" value="1"/>
 <entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
 <entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
-<entry key="port_object_summary" type="xstring" value="Rows: 10, Cols: 1"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 10000, Cols: 1"/>
 <entry key="port_dir_location" type="xstring" value="port_1"/>
 </config>
 </config>
 <config key="filestores">
 <entry key="file_store_location" type="xstring" isnull="true" value=""/>
-<entry key="file_store_id" type="xstring" value="1be34888-74b5-4ba8-aa8d-47bd8f2e80ce"/>
+<entry key="file_store_id" type="xstring" value="ce0c6eb4-b1a7-42bf-af3b-9ee53ee9d870"/>
 </config>
 </config>

@@ -2,6 +2,7 @@ package pl.edu.agh.ed.algorithm.frequent.sequences.closed.spmf.clospan;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +22,7 @@ import pl.edu.agh.ed.model.sequence.ISequenceSet;
 
 public class CloSpanClosedFrequentSequenceExtractor implements IClosedFrequentSequencesExtractor {
 	private static final String SEPARATOR = "#SUP:";
+	private static final Path TEMP_PATH = Paths.get("F:\\TEMP");
 
 	@Override
 	public IFrequentSequenceSet extract(ISequenceSet sequenceSet, int minSupport) {
@@ -32,7 +34,7 @@ public class CloSpanClosedFrequentSequenceExtractor implements IClosedFrequentSe
 		Path tempOutputFile = null;
 		Path tempInputFile = null;
 		try {
-			tempInputFile = Files.createTempFile("spmf-input", ".text");
+			tempInputFile = Files.createTempFile(TEMP_PATH, "spmf-input", ".text");
 			List<String> lines = sequenceSet
 					.stream().map(
 							sequence -> sequence.getGroups().stream().map(IGroup::getItemsIds)
@@ -41,7 +43,7 @@ public class CloSpanClosedFrequentSequenceExtractor implements IClosedFrequentSe
 									.reduce((s1, s2) -> s1 + " -1 " + s2).map(s -> s + " -1 -2").orElse(""))
 					.collect(Collectors.toList());
 			Files.write(tempInputFile, lines);
-			tempOutputFile = Files.createTempFile("spmf-output", ".text");
+			tempOutputFile = Files.createTempFile(TEMP_PATH, "spmf-output", ".text");
 
 			AbstractionCreator abstractionCreator = AbstractionCreator_Qualitative.getInstance();
 

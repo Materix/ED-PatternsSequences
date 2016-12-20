@@ -3,6 +3,7 @@ package pl.edu.agh.ed.algorithm.frequent.patterns.closed.spmf;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +17,8 @@ import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
 public abstract class AbstractSPMFClosedFileBasedFrequentPatternsExtractor<T extends IItem>
 		implements IClosedFrequentPatternsExtractor<T> {
+	private static final Path TEMP_PATH = Paths.get("F:\\TEMP");
+
 	private static final String SEPARATOR = "#SUP:";
 
 	@Override
@@ -23,13 +26,13 @@ public abstract class AbstractSPMFClosedFileBasedFrequentPatternsExtractor<T ext
 		Path tempInputFile = null;
 		Path tempOutputFile = null;
 		try {
-			tempInputFile = Files.createTempFile("spmf-input", ".text");
-			List<String> lines = transactionSet
-					.stream().map(transaction -> transaction.getItems().stream().map(IItem::getId)
+			tempInputFile = Files.createTempFile(TEMP_PATH, "spmf-input", ".text");
+			List<String> lines = transactionSet.stream()
+					.map(transaction -> transaction.getItems().stream().map(IItem::getId).sorted()
 							.map(id -> id.toString()).reduce((s1, s2) -> s1 + " " + s2).orElse(""))
 					.collect(Collectors.toList());
 			Files.write(tempInputFile, lines);
-			tempOutputFile = Files.createTempFile("spmf-output", ".text");
+			tempOutputFile = Files.createTempFile(TEMP_PATH, "spmf-output", ".text");
 			extract(tempInputFile.toString(), tempOutputFile.toString(), ((double) minSupport) / transactionSet.size(),
 					minSupport);
 			return new FrequentPatternSet<>(transactionSet, Files.readAllLines(tempOutputFile).stream().map(

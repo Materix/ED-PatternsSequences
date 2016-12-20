@@ -13,13 +13,17 @@ Require-Bundle: org.eclipse.core.runtime,
  Apriori;bundle-version="1.0.0",
  Model;bundle-version="1.0.0",
  FpGrowth;bundle-version="1.0.0",
- SPMFWrapper
+ SPMFWrapper,
+ ParSeMiSWrapper;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: pl.edu.agh.ed.nodes,
  pl.edu.agh.ed.nodes.frequentPatterns,
  pl.edu.agh.ed.nodes.frequentPatterns.closed,
  pl.edu.agh.ed.nodes.frequentSequences,
  pl.edu.agh.ed.nodes.frequentSequences.closed,
+ pl.edu.agh.ed.nodes.graphs,
+ pl.edu.agh.ed.nodes.graphs.readers,
+ pl.edu.agh.ed.nodes.graphs.readers.impl,
  pl.edu.agh.ed.nodes.transactions.readers,
  pl.edu.agh.ed.nodes.transactions.readers.impl,
  pl.edu.agh.ed.nodes.transactions.writers,

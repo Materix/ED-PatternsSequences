@@ -16,6 +16,10 @@
           deprecated="false"
           factory-class="pl.edu.agh.ed.nodes.frequentSequences.closed.ClosedFrequentSequencesExtractorNodeFactory">
     </node>
+    <node
+          deprecated="false"
+          factory-class="pl.edu.agh.ed.nodes.graphs.FrequentSubgraphsExtractorNodeFactory">
+    </node>
    </extension>
    
 </plugin>

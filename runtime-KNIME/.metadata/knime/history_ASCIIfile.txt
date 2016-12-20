@@ -1,8 +1,8 @@
-file:/F:/Studia/Sem9/ED/eclipse/../repository/data/transactions.txt
-file:/F:/Studia/Sem9/ED/eclipse/../repository/data/sequence.sequences
+file:/F:/Studia/Sem9/ED/repository/data/sequences.simpleLarge.txt
+file:/F:/Studia/Sem9/ED/T40I10D10K.txt
 knime://knime.workflow/data.all
-file:/F:/Studia/Sem2/ED/eclipse/../repository/data/sequence.sequences
-file:/F:/Studia/Sem2/ED/eclipse/../repository/data/transactions.txt
-file:/F:/Studia/Sem9/ED/sequence.sequences
-file:/F:/Studia/Sem9/ED/transactions.txt
-file:/F:/Studia/Sem9/ED/sequences.txt
+file:/F:/TEMP/input.text
+file:/F:/Studia/Sem9/ED/repository/data/transactions/transactionsCount/1000.txt
+file:/F:/Studia/Sem9/ED/repository/data/graph.simple.txt
+file:/F:/Studia/Sem9/ED/eclipse/../repository/data/sequence.sequences
+file:/F:/Studia/Sem9/ED/eclipse/../repository/data/transactions.txt

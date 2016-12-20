@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ParSeMiSWrapper
+Bundle-SymbolicName: ParSeMiSWrapper;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: Model,
+ ParSeMiS
+Export-Package: pl.edu.agh.ed.algorithm.frequent.graphs.parsemis.gspan

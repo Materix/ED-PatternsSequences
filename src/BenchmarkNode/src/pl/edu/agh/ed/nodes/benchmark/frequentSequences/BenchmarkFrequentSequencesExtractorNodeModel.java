@@ -18,6 +18,10 @@ import org.knime.core.data.date.DateAndTimeCell;
 import org.knime.core.data.def.BooleanCell;
 import org.knime.core.data.def.BooleanCell.BooleanCellFactory;
 import org.knime.core.data.def.DefaultRow;
+import org.knime.core.data.def.IntCell;
+import org.knime.core.data.def.IntCell.IntCellFactory;
+import org.knime.core.data.def.StringCell;
+import org.knime.core.data.def.StringCell.StringCellFactory;
 import org.knime.core.node.BufferedDataContainer;
 import org.knime.core.node.BufferedDataTable;
 import org.knime.core.node.CanceledExecutionException;
@@ -30,6 +34,7 @@ import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 
 import pl.edu.agh.ed.algorithm.IFrequentSequencesExtractor;
+import pl.edu.agh.ed.model.frequent.sequence.FrequentSequenceSet;
 import pl.edu.agh.ed.model.frequent.sequence.IFrequentSequenceSet;
 import pl.edu.agh.ed.model.sequence.ISequenceSet;
 import pl.edu.agh.ed.nodes.frequentSequences.FrequentSequencesExtractorNodeConstans;
@@ -50,7 +55,9 @@ public class BenchmarkFrequentSequencesExtractorNodeModel extends NodeModel {
 
 	private static final DataTableSpec OUTPUT_DATA_TABLE_SPEC = new DataTableSpec(
 			new DataColumnSpecCreator("Execution time", DateAndTimeCell.TYPE).createSpec(),
-			new DataColumnSpecCreator("Correctness", BooleanCell.TYPE).createSpec());
+			new DataColumnSpecCreator("Pattern count", IntCell.TYPE).createSpec(),
+			new DataColumnSpecCreator("Correctness", BooleanCell.TYPE).createSpec(),
+			new DataColumnSpecCreator("Message", StringCell.TYPE).createSpec());
 
 	protected BenchmarkFrequentSequencesExtractorNodeModel() {
 		super(1, 1);
@@ -86,14 +93,23 @@ public class BenchmarkFrequentSequencesExtractorNodeModel extends NodeModel {
 				executor = set -> extractor.extract(set,
 						BenchmarkFrequentSequencesExtractorNodeConstans.SUPPORT_SETTINGS.getIntValue());
 			}
+			boolean correctness = true;
 			long start = System.currentTimeMillis();
-			IFrequentSequenceSet result = executor.apply(sequenceSet);
+			String message = "";
+			IFrequentSequenceSet result = new FrequentSequenceSet(sequenceSet);
+			try {
+				result = executor.apply(sequenceSet);
+			} catch (Throwable e) {
+				correctness = false;
+			}
 			long stop = System.currentTimeMillis();
 
 			RowKey key = new RowKey(algorithm);
-			DataCell[] cells = new DataCell[2];
+			DataCell[] cells = new DataCell[4];
 			cells[0] = new DateAndTimeCell(stop - start, false, true, true);
-			cells[1] = BooleanCellFactory.create(true);
+			cells[1] = IntCellFactory.create(result.size());
+			cells[2] = BooleanCellFactory.create(correctness);
+			cells[3] = StringCellFactory.create(message);
 			DataRow row = new DefaultRow(key, cells);
 			dataContainer.addRowToTable(row);
 		}

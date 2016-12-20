@@ -19,6 +19,14 @@
             deprecated="false"
             factory-class="pl.edu.agh.ed.nodes.benchmark.frequentSequences.closed.BenchmarkClosedFrequentSequencesExtractorNodeFactory">
       </node>
+      <node
+            deprecated="false"
+            factory-class="pl.edu.agh.ed.nodes.benchmark.files.frequentPatterns.FilesBenchmarkFrequentPatternExtractorNodeFactory">
+      </node>
+      <node
+            deprecated="false"
+            factory-class="pl.edu.agh.ed.nodes.benchmark.files.frequentPatterns.closed.FilesBenchmarkClosedFrequentPatternExtractorNodeFactory">
+      </node>
    </extension>
 
 </plugin>

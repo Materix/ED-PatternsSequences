@@ -30,10 +30,10 @@ public class OrderedStringSequenceSetReader implements ISequenceSetReader {
 		Set<ISequence> sequences = rows.stream().map(row -> {
 			return new Sequence(sequenceIdIterator.next(), Arrays.stream(row.split("; ")).map(group -> {
 				Map<String, Integer> frequency = new HashMap<>();
-				return (IGroup)new Group(groupIdIterator.next(), Arrays.stream(group.split(", ")).map(item -> {
+				return (IGroup) new Group(groupIdIterator.next(), Arrays.stream(group.split(" ")).map(item -> {
 					int order = frequency.getOrDefault(item, 0) + 1;
 					frequency.put(item, order);
-					
+
 					Pair key = Pair.of(item, order);
 					if (!cache.containsKey(key)) {
 						cache.put(key, new OrderedStringItem(itemIdIterator.nextInt(), item, order));
@@ -42,15 +42,15 @@ public class OrderedStringSequenceSetReader implements ISequenceSetReader {
 				}).collect(Collectors.toList()));
 			}).collect(Collectors.toList()));
 		}).collect(Collectors.toSet());
-		
-		return new SequenceSet(cache.values().stream().collect(Collectors.toMap(IItem::getId, i -> i)),sequences);
+
+		return new SequenceSet(cache.values().stream().collect(Collectors.toMap(IItem::getId, i -> i)), sequences);
 	}
-	
+
 	private static final class Pair {
 		private final String value;
-		
+
 		private final int order;
-		
+
 		private Pair(String value, int order) {
 			this.value = value;
 			this.order = order;
@@ -83,11 +83,10 @@ public class OrderedStringSequenceSetReader implements ISequenceSetReader {
 				return false;
 			return true;
 		}
-		
+
 		public static Pair of(String value, int order) {
 			return new Pair(value, order);
 		}
 	}
-
 
 }

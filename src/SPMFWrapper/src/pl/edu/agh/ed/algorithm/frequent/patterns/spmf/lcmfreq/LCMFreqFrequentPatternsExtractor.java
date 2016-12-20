@@ -2,7 +2,7 @@ package pl.edu.agh.ed.algorithm.frequent.patterns.spmf.lcmfreq;
 
 import java.io.IOException;
 
-import ca.pfv.spmf.algorithms.frequentpatterns.lcm.AlgoLCM;
+import ca.pfv.spmf.algorithms.frequentpatterns.lcm.AlgoLCMFreq;
 import ca.pfv.spmf.algorithms.frequentpatterns.lcm.Dataset;
 import pl.edu.agh.ed.algorithm.IFrequentPatternsExtractor;
 import pl.edu.agh.ed.algorithm.frequent.patterns.spmf.AbstractSPMFFileBasedFrequentPatternsExtractor;
@@ -13,9 +13,9 @@ public class LCMFreqFrequentPatternsExtractor<T extends IItem> extends AbstractS
 
 	@Override
 	public void extract(String input, String output, double minRelativeSupport) throws IOException {
-		AlgoLCM algoLCM = new AlgoLCM();
+		AlgoLCMFreq algoLCM = new AlgoLCMFreq();
 		algoLCM.runAlgorithm(minRelativeSupport, new Dataset(input), output);
-		
+
 	}
 
 }
