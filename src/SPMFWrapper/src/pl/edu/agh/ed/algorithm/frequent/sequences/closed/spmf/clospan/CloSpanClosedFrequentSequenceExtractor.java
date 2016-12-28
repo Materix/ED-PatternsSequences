@@ -52,7 +52,7 @@ public class CloSpanClosedFrequentSequenceExtractor implements IClosedFrequentSe
 			sequenceDatabase.loadFile(tempInputFile.toString(), minRelativeSupport);
 
 			AlgoCloSpan algo = new AlgoCloSpan(minRelativeSupport, abstractionCreator, true, true);
-			algo.runAlgorithm(sequenceDatabase, false, false, tempOutputFile.toString(), false);
+			algo.runAlgorithm(sequenceDatabase, true, false, tempOutputFile.toString(), false);
 
 			return new FrequentSequenceSet(sequenceSet,
 					Files.readAllLines(tempOutputFile).stream()

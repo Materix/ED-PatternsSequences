@@ -55,7 +55,7 @@ public class CMClaSPClosedFrequentSequenceExtractor implements IClosedFrequentSe
 			double support = sequenceDatabase.loadFile(tempInputFile.toString(), minRelativeSupport);
 
 			AlgoCM_ClaSP algo = new AlgoCM_ClaSP(support, abstractionCreator, true, true);
-			algo.runAlgorithm(sequenceDatabase, false, false, tempOutputFile.toString(), false);
+			algo.runAlgorithm(sequenceDatabase, true, false, tempOutputFile.toString(), false);
 
 			return new FrequentSequenceSet(sequenceSet,
 					Files.readAllLines(tempOutputFile).stream()

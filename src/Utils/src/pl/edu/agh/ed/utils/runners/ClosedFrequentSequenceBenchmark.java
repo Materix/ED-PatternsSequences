@@ -27,13 +27,13 @@ public class ClosedFrequentSequenceBenchmark {
 
 	private static final String SEPARATOR = ";";
 
-	private static final RunnerParameters DEFAULT_PARAMETERS = RunnerParameters.of(Paths.get("data", "kosarakSeq.txt"),
-			0.01, 0.0011, 0.001, 1);
+	private static final RunnerParameters DEFAULT_PARAMETERS = RunnerParameters.of(Paths.get("data", "default.txt"),
+			0.2, 0.2, 0.2, 1);
 
 	public static void main(String[] args) throws IOException {
 		Map<String, IClosedFrequentSequencesExtractor> extractors = new HashMap<>();
 
-		extractors.put("BIDE", new BidePlusClosedFrequentSequenceExtractor());
+		extractors.put("BIDEPlus", new BidePlusClosedFrequentSequenceExtractor());
 		extractors.put("ClaSP", new ClaSPClosedFrequentSequenceExtractor());
 		extractors.put("CloSpan", new CloSpanClosedFrequentSequenceExtractor());
 		extractors.put("CMClaSP", new CMClaSPClosedFrequentSequenceExtractor());

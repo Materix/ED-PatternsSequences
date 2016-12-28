@@ -33,7 +33,7 @@ public class FrequentPatternBenchmark {
 	private static final String SEPARATOR = ";";
 
 	private static final RunnerParameters DEFAULT_PARAMETERS = RunnerParameters.of(Paths.get("data", "default.txt"),
-			0.001, 0.0001, 0.0001, 3);
+			0.5, 0.5, 0.1, 1);
 
 	public static void main(String[] args) throws IOException {
 		Map<String, IFrequentPatternsExtractor<IItem>> extractors = new HashMap<>();

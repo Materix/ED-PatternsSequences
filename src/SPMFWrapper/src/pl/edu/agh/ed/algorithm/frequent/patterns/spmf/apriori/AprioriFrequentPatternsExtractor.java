@@ -13,7 +13,7 @@ public class AprioriFrequentPatternsExtractor<T extends IItem> extends AbstractS
 	@Override
 	public void extract(String input, String output, double minRelativeSupport) throws IOException {
 		AlgoApriori algoFPGrowth = new AlgoApriori();
-		algoFPGrowth.runAlgorithm(minRelativeSupport, input, input);
+		algoFPGrowth.runAlgorithm(minRelativeSupport, input, output);
 	}
 
 }

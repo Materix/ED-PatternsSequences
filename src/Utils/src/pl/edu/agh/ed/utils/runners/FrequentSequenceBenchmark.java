@@ -28,7 +28,7 @@ public class FrequentSequenceBenchmark {
 
 	private static final String SEPARATOR = ";";
 
-	private static final RunnerParameters DEFAULT_PARAMETERS = RunnerParameters.of(Paths.get("data", "kosarakSeq.txt"),
+	private static final RunnerParameters DEFAULT_PARAMETERS = RunnerParameters.of(Paths.get("data", "default.txt"),
 			0.01, 0.0011, 0.001, 1);
 
 	public static void main(String[] args) throws IOException {
@@ -41,6 +41,7 @@ public class FrequentSequenceBenchmark {
 		extractors.put("PrefixSpan", new PrefixSpanFrequentSequenceExtractor());
 		extractors.put("LAPIN", new LAPINFrequentSequenceExtractor());
 
+		// Too long
 		// extractors.put("GSP", new GSPFrequentSequenceExtractor());
 
 		RunnerParameters parameters;

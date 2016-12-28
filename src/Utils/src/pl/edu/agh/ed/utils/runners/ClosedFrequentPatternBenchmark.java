@@ -31,7 +31,7 @@ public class ClosedFrequentPatternBenchmark {
 	private static final String SEPARATOR = ";";
 
 	private static final RunnerParameters DEFAULT_PARAMETERS = RunnerParameters.of(Paths.get("data", "default.txt"),
-			0.001, 0.0001, 0.0001, 1);
+			0.65, 0.65, 0.1, 1);
 
 	public static void main(String[] args) throws IOException {
 		Map<String, IClosedFrequentPatternsExtractor<IItem>> extractors = new HashMap<>();
