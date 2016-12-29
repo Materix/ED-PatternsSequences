@@ -1,6 +1,7 @@
 package pl.edu.agh.ed.utils.runners;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -67,5 +68,26 @@ public class BenchmarkUtils {
 	private static String writeFrequentSequence(IFrequentSequence frequentSequence) {
 		return frequentSequence.getSupport() + "\t\t" + frequentSequence.getGroups().stream().map(Object::toString)
 				.reduce((s1, s2) -> s1 + " -> " + s2).orElse("");
+	}
+
+	public static void print(Object string, PrintStream... printStreams) {
+		System.out.print(string + " ");
+		for (PrintStream printStream : printStreams) {
+			printStream.print(string);
+		}
+	}
+
+	public static void println(Object string, PrintStream... printStreams) {
+		System.out.println(string + " ");
+		for (PrintStream printStream : printStreams) {
+			printStream.println(string);
+		}
+	}
+
+	public static void println(PrintStream... printStreams) {
+		System.out.println();
+		for (PrintStream printStream : printStreams) {
+			printStream.println();
+		}
 	}
 }

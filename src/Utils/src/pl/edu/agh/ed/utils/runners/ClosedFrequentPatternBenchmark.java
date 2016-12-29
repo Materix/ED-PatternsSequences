@@ -93,14 +93,14 @@ public class ClosedFrequentPatternBenchmark {
 					PrintStream outputMemory = new PrintStream(Files.newOutputStream(outputMemoryPath, //
 							StandardOpenOption.CREATE, //
 							StandardOpenOption.TRUNCATE_EXISTING))) {
-				println(extractors.keySet() //
+				BenchmarkUtils.println(extractors.keySet() //
 						.stream() //
 						.reduce((s1, s2) -> s1 + SEPARATOR + s2) //
 						.map(s -> SEPARATOR + s) //
 						.get(), outputTime, outputResultSize, outputMemory);
 				for (double support = parameters.getMaxSupport(); support >= parameters
 						.getMinSupport(); support -= parameters.getSupportStep()) {
-					print(support, outputTime, outputResultSize, outputMemory);
+					BenchmarkUtils.print(support, outputTime, outputResultSize, outputMemory);
 					for (Entry<String, IClosedFrequentPatternsExtractor<IItem>> entry : extractors.entrySet()) {
 						System.runFinalization();
 						System.gc();
@@ -118,35 +118,14 @@ public class ClosedFrequentPatternBenchmark {
 						if (run == 0) {
 							BenchmarkUtils.writeResultToFile(result, outputResultPath.resolve(entry.getKey() + ".txt"));
 						}
-						print(SEPARATOR, outputTime, outputResultSize, outputMemory);
-						print(result.size(), outputResultSize);
-						print(stop - start, outputTime);
-						print(stopMemory - startMemory, outputMemory);
+						BenchmarkUtils.print(SEPARATOR, outputTime, outputResultSize, outputMemory);
+						BenchmarkUtils.print(result.size(), outputResultSize);
+						BenchmarkUtils.print(stop - start, outputTime);
+						BenchmarkUtils.print(stopMemory - startMemory, outputMemory);
 					}
-					println(outputTime, outputResultSize, outputMemory);
+					BenchmarkUtils.println(outputTime, outputResultSize, outputMemory);
 				}
 			}
-		}
-	}
-
-	private static void print(Object string, PrintStream... printStreams) {
-		System.out.print(string + " ");
-		for (PrintStream printStream : printStreams) {
-			printStream.print(string);
-		}
-	}
-
-	private static void println(Object string, PrintStream... printStreams) {
-		System.out.println(string + " ");
-		for (PrintStream printStream : printStreams) {
-			printStream.println(string);
-		}
-	}
-
-	private static void println(PrintStream... printStreams) {
-		System.out.println();
-		for (PrintStream printStream : printStreams) {
-			printStream.println();
 		}
 	}
 }
