@@ -22,9 +22,14 @@ public class ResultAnalyzer {
 		for (Path typeDir : Files.newDirectoryStream(INPUT_DIR_PATH)) {
 			for (Path datasetDir : Files.newDirectoryStream(typeDir)) {
 				for (Path expDir : Files.newDirectoryStream(datasetDir)) {
-					resultsDir.add(expDir);
+					if (!expDir.endsWith("result")) {
+						resultsDir.add(expDir);
+					}
 				}
 			}
+		}
+		if (!Files.exists(OUTPUT_DIR_PATH)) {
+			Files.createDirectories(OUTPUT_DIR_PATH);
 		}
 		List<String> globalTime = new ArrayList<>();
 		List<String> globalSize = new ArrayList<>();
@@ -33,7 +38,7 @@ public class ResultAnalyzer {
 			Map<Integer, Map<Integer, Double>> averages = new HashMap<>();
 			String header = "";
 			int number = 0;
-			for (Path runResultPath : Files.newDirectoryStream(expDir, "run-*")) {
+			for (Path runResultPath : Files.newDirectoryStream(expDir, "run-*.txt")) {
 				number++;
 				List<String> lines = Files.readAllLines(runResultPath);
 				header = lines.get(0);

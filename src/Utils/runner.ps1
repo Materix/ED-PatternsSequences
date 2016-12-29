@@ -5,7 +5,7 @@ $cfp = "ClosedFrequentPatternBenchmark"
 $s = "FrequentSequenceBenchmark"
 $cs = "ClosedFrequentSequenceBenchmark"
 $package = "pl.edu.agh.ed.utils.runners."
-$javaOptions = "-verbose:gc -Xms6g -Xmx6g -Xmn6g -server"
+$javaOptions = "-verbose:gc -Xms12g -Xmx12g -Xmn12g -server"
 
 if (Test-Path output) 
 {
@@ -18,33 +18,32 @@ if (Test-Path output)
     Rename-Item -NewName output.$i -Path output
 }
 
-Write-Host "java $javaOptions -classpath $classpath ($package + $fp) kddcup99"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $fp) kddcup99
-Write-Host "java $javaOptions -classpath $classpath ($package + $cfp) kddcup99"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $cfp) kddcup99
-
-Write-Host "java $javaOptions -classpath $classpath ($package + $s) leviathan"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $s) leviathan
-Write-Host "java $javaOptions -classpath $classpath ($package + $cs) leviathan"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $cs) leviathan
-
-Write-Host "java $javaOptions -classpath $classpath ($package + $fp) mushroom"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $fp) mushroom
-Write-Host "java $javaOptions -classpath $classpath ($package + $cfp) mushroom"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $cfp) mushroom
-
+Write-Host "java $javaOptions -classpath $classpath ($package + $s) kosarakSeq"
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $s) kosarakSeq
+Write-Host "java $javaOptions -classpath $classpath ($package + $cs) kosarakSeq"
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $cs) kosarakSeq
 
 Write-Host "java $javaOptions -classpath $classpath ($package + $s) bible"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $s) bible
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $s) bible
 Write-Host "java $javaOptions -classpath $classpath ($package + $cs) bible"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $cs) bible
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $cs) bible
+
+Write-Host "java $javaOptions -classpath $classpath ($package + $fp) kddcup99"
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $fp) kddcup99
+Write-Host "java $javaOptions -classpath $classpath ($package + $cfp) kddcup99"
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $cfp) kddcup99
+
+Write-Host "java $javaOptions -classpath $classpath ($package + $s) leviathan"
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $s) leviathan
+Write-Host "java $javaOptions -classpath $classpath ($package + $cs) leviathan"
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $cs) leviathan
+
+Write-Host "java $javaOptions -classpath $classpath ($package + $fp) mushroom"
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $fp) mushroom
+Write-Host "java $javaOptions -classpath $classpath ($package + $cfp) mushroom"
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $cfp) mushroom
 
 Write-Host "java $javaOptions -classpath $classpath ($package + $fp) onlineRetail"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $fp) onlineRetail
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $fp) onlineRetail
 Write-Host "java $javaOptions -classpath $classpath ($package + $cfp) onlineRetail"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $cfp) onlineRetail
-
-Write-Host "java $javaOptions -classpath $classpath ($package + $s) kosarakSeq"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $s) kosarakSeq
-Write-Host "java $javaOptions -classpath $classpath ($package + $cs) kosarakSeq"
-java -verbose:gc -Xms6g -Xmx6g -Xmn6g -server -classpath $classpath ($package + $cs) kosarakSeq
+java -verbose:gc -Xms12g -Xmx12g -Xmn12g -server -classpath $classpath ($package + $cfp) onlineRetail
