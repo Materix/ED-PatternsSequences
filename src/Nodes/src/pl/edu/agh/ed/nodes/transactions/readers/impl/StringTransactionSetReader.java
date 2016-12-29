@@ -16,21 +16,16 @@ import pl.edu.agh.ed.model.transactions.TransactionSet;
 import pl.edu.agh.ed.nodes.transactions.readers.ITransactionSetReader;
 
 public class StringTransactionSetReader implements ITransactionSetReader<IItem> {
+	@Override
 	public ITransactionSet<IItem> readTransactionSet(List<String> list) {
-		OfInt itemIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
-		Map<String, IItem> items = list.stream()
-			.map(s -> s.split(" "))
-			.flatMap(Arrays::stream)
-			.distinct()
-			.collect(Collectors.toMap(Function.identity(), item -> new StringItem(itemIdIterator.next(), item)));
-		
-		OfInt transactionIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
+		OfInt itemIdIterator = IntStream.iterate(1, id -> id + 1).iterator();
+		Map<String, IItem> items = list.stream().map(s -> s.split(" ")).flatMap(Arrays::stream).distinct()
+				.collect(Collectors.toMap(Function.identity(), item -> new StringItem(itemIdIterator.next(), item)));
+
+		OfInt transactionIdIterator = IntStream.iterate(1, id -> id + 1).iterator();
 		return new TransactionSet<>(items.values().stream().collect(Collectors.toMap(IItem::getId, i -> i)),
-			list.stream().map(s -> s.split(" "))
-				.map(Arrays::stream)
-				.map(s -> s.map(i -> items.get(i)).distinct().collect(Collectors.toList()))
-				.map(i -> new Transaction<>(transactionIdIterator.next(), i))
-				.collect(Collectors.toSet())
-		);
+				list.stream().map(s -> s.split(" ")).map(Arrays::stream)
+						.map(s -> s.map(i -> items.get(i)).distinct().collect(Collectors.toList()))
+						.map(i -> new Transaction<>(transactionIdIterator.next(), i)).collect(Collectors.toSet()));
 	}
 }

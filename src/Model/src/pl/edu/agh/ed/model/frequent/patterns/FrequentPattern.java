@@ -1,25 +1,22 @@
 package pl.edu.agh.ed.model.frequent.patterns;
 
-import java.util.Collections;
 import java.util.List;
 
 import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 
 public class FrequentPattern<T extends IItem> implements IFrequentPattern<T> {
-	
+
 	private final ITransactionSet<T> transactionSet;
-	
+
 	private final List<T> items;
-	
+
 	private final long support;
-	
+
 	public FrequentPattern(ITransactionSet<T> transactionSet, List<T> items) {
-		this(transactionSet, items, transactionSet.stream()
-			.filter(transaction -> transaction.contains(items))
-			.count());
+		this(transactionSet, items, transactionSet.stream().filter(transaction -> transaction.contains(items)).count());
 	}
-	
+
 	public FrequentPattern(ITransactionSet<T> transactionSet, List<T> items, long support) {
 		this.transactionSet = transactionSet;
 		this.items = items;
@@ -33,7 +30,8 @@ public class FrequentPattern<T extends IItem> implements IFrequentPattern<T> {
 
 	@Override
 	public List<T> getItems() {
-		return Collections.unmodifiableList(items);
+		return items;
+		// return Collections.unmodifiableList(items);
 	}
 
 	@Override
@@ -60,15 +58,18 @@ public class FrequentPattern<T extends IItem> implements IFrequentPattern<T> {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
 		FrequentPattern<?> other = (FrequentPattern<?>) obj;
 		if (items == null) {
 			if (other.items != null) {
 				return false;
 			}
-		} 
+		}
 		if (transactionSet == null) {
 			if (other.transactionSet != null) {
 				return false;

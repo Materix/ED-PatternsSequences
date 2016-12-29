@@ -28,7 +28,7 @@ public abstract class AbstractSPMFClosedFileBasedFrequentPatternsExtractor<T ext
 		try {
 			tempInputFile = Files.createTempFile(TEMP_PATH, "spmf-input", ".text");
 			List<String> lines = transactionSet.stream()
-					.map(transaction -> transaction.getItems().stream().map(IItem::getId).map(i -> i + 1).sorted()
+					.map(transaction -> transaction.getItems().stream().map(IItem::getId).sorted()
 							.map(id -> id.toString()).reduce((s1, s2) -> s1 + " " + s2).orElse(""))
 					.collect(Collectors.toList());
 			Files.write(tempInputFile, lines);

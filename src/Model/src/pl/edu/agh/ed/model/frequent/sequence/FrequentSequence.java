@@ -1,6 +1,5 @@
 package pl.edu.agh.ed.model.frequent.sequence;
 
-import java.util.Collections;
 import java.util.List;
 
 import pl.edu.agh.ed.model.IGroup;
@@ -8,23 +7,21 @@ import pl.edu.agh.ed.model.sequence.ISequenceSet;
 
 public class FrequentSequence implements IFrequentSequence {
 	private final ISequenceSet sequenceSet;
-	
+
 	private final List<IGroup> groups;
-	
+
 	private final long support;
-	
+
 	public FrequentSequence(ISequenceSet sequenceSet, List<IGroup> groups) {
-		this(sequenceSet, groups, sequenceSet.stream()
-			.filter(transaction -> transaction.contains(groups))
-			.count());
+		this(sequenceSet, groups, sequenceSet.stream().filter(transaction -> transaction.contains(groups)).count());
 	}
-	
+
 	public FrequentSequence(ISequenceSet sequenceSet, List<IGroup> groups, long support) {
 		this.sequenceSet = sequenceSet;
 		this.groups = groups;
 		this.support = support;
 	}
-	
+
 	@Override
 	public ISequenceSet getSequenceSet() {
 		return sequenceSet;
@@ -32,7 +29,8 @@ public class FrequentSequence implements IFrequentSequence {
 
 	@Override
 	public List<IGroup> getGroups() {
-		return Collections.unmodifiableList(groups);
+		return groups;
+		// return Collections.unmodifiableList(groups);
 	}
 
 	@Override
@@ -54,9 +52,12 @@ public class FrequentSequence implements IFrequentSequence {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
 		FrequentSequence other = (FrequentSequence) obj;
 		if (groups == null) {
 			if (other.groups != null) {
@@ -64,7 +65,7 @@ public class FrequentSequence implements IFrequentSequence {
 			} else {
 				return true;
 			}
-		} 
+		}
 		if (sequenceSet == null) {
 			if (other.sequenceSet != null) {
 				return false;
@@ -76,9 +77,10 @@ public class FrequentSequence implements IFrequentSequence {
 		}
 		return groups.containsAll(other.groups);
 	}
-	
+
 	@Override
 	public String toString() {
-		return groups.stream().map(Object::toString).map(s -> "{" + s + "}").reduce((s1, s2) -> s1 + " " + s2).orElse("");
+		return groups.stream().map(Object::toString).map(s -> "{" + s + "}").reduce((s1, s2) -> s1 + " " + s2)
+				.orElse("");
 	}
 }

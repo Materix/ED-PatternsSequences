@@ -17,8 +17,8 @@ public class RunnerParametersDB {
 		// "BMS_WebView.txt"), 0.001, 0.0001, 0.0001, 5));
 
 		DB.put("leviathan", RunnerParameters.of(Paths.get("data", "leviathan.txt"), 0.2, 0.025, 0.025, 5));
-		DB.put("bible", RunnerParameters.of(Paths.get("data", "bible.txt"), 0.2, 0.025, 0.025, 1));
-		DB.put("kosarakSeq", RunnerParameters.of(Paths.get("data", "kosarakSeq.txt"), 0.01, 0.0011, 0.001, 1));
+		DB.put("bible", RunnerParameters.of(Paths.get("data", "bible.txt"), 0.2, 0.025, 0.025, 5));
+		DB.put("kosarakSeq", RunnerParameters.of(Paths.get("data", "kosarakSeq.txt"), 0.01, 0.0011, 0.001, 5));
 	}
 
 	public static RunnerParameters getParameters(String key) {

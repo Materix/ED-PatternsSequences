@@ -69,11 +69,11 @@ public class LabeledGraphsSetReader implements ILabeledGraphsSetReader {
 		Set<ILabeledEdge> edges = new HashSet<>();
 		Set<ILabeledGraph> graphs = new HashSet<>();
 		Iterator<String> labelGenerator = IntStream //
-				.iterate(0, i -> i + 1) //
+				.iterate(1, i -> i + 1) //
 				.mapToObj(i -> Integer.toString(i)) //
 				.iterator();
 		OfInt idGenerator = IntStream //
-				.iterate(0, i -> i + 1) //
+				.iterate(1, i -> i + 1) //
 				.iterator();
 		LabeledGraphBuilder builder = new LabeledGraphBuilder();
 		for (String line : lines) {

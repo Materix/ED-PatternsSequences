@@ -1,0 +1,2 @@
+;CloSpan;BIDEPlus;CMClaSP;ClaSP
+0.2;2005;926;2750;1586

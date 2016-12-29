@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import ca.pfv.spmf.tools.MemoryLogger;
 import pl.edu.agh.ed.algorithm.IFrequentSequencesExtractor;
@@ -68,6 +69,10 @@ public class FrequentSequenceBenchmark {
 		if (!Files.exists(outputMemoryDirPath)) {
 			Files.createDirectories(outputMemoryDirPath);
 		}
+		Path outputResultDirPath = Paths.get("output", "sequence", name, "result");
+		if (!Files.exists(outputResultDirPath)) {
+			Files.createDirectories(outputResultDirPath);
+		}
 		for (IFrequentSequencesExtractor extractor : extractors.values()) {
 			extractor.extract(inputDataSet, MAX_SUPPORT);
 		}
@@ -77,6 +82,10 @@ public class FrequentSequenceBenchmark {
 			Path outputPath = outputTimeDirPath.resolve(fileName);
 			Path outputResultSizePath = outputResultSizeDirPath.resolve(fileName);
 			Path outputMemoryPath = outputMemoryDirPath.resolve(fileName);
+			Path outputResultPath = outputResultDirPath.resolve("run-" + run);
+			if (!Files.exists(outputResultPath)) {
+				Files.createDirectories(outputResultPath);
+			}
 			try (PrintStream outputTime = new PrintStream(Files.newOutputStream(outputPath, //
 					StandardOpenOption.CREATE, //
 					StandardOpenOption.TRUNCATE_EXISTING));
@@ -94,7 +103,7 @@ public class FrequentSequenceBenchmark {
 				for (double support = parameters.getMaxSupport(); support >= parameters
 						.getMinSupport(); support -= parameters.getSupportStep()) {
 					print(support, outputTime, outputResultSize, outputMemory);
-					for (IFrequentSequencesExtractor extractor : extractors.values()) {
+					for (Entry<String, IFrequentSequencesExtractor> entry : extractors.entrySet()) {
 						System.runFinalization();
 						System.gc();
 						MemoryLogger.getInstance().reset();
@@ -102,13 +111,16 @@ public class FrequentSequenceBenchmark {
 						double startMemory = MemoryLogger.getInstance().getMaxMemory();
 						long start = System.currentTimeMillis();
 
-						IFrequentSequenceSet result = extractor.extract(inputDataSet, support);
-						MemoryLogger.getInstance().checkMemory();
+						IFrequentSequenceSet result = entry.getValue().extract(inputDataSet, support);
 
+						MemoryLogger.getInstance().checkMemory();
 						long stop = System.currentTimeMillis();
 						double stopMemory = MemoryLogger.getInstance().getMaxMemory();
-						print(SEPARATOR, outputTime, outputResultSize, outputMemory);
 
+						if (run == 0) {
+							BenchmarkUtils.writeResultToFile(result, outputResultPath.resolve(entry.getKey() + ".txt"));
+						}
+						print(SEPARATOR, outputTime, outputResultSize, outputMemory);
 						print(result.size(), outputResultSize);
 						print(stop - start, outputTime);
 						print(stopMemory - startMemory, outputMemory);

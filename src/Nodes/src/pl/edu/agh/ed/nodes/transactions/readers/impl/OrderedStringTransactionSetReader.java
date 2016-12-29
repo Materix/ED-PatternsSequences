@@ -18,16 +18,18 @@ import pl.edu.agh.ed.model.transactions.TransactionSet;
 import pl.edu.agh.ed.nodes.transactions.readers.ITransactionSetReader;
 
 public class OrderedStringTransactionSetReader implements ITransactionSetReader<IItem> {
+	@Override
 	public ITransactionSet<IItem> readTransactionSet(List<String> rows) {
-		OfInt itemIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
-		OfInt transactionIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
+		OfInt itemIdIterator = IntStream.iterate(1, id -> id + 1).iterator();
+		OfInt transactionIdIterator = IntStream.iterate(1, id -> id + 1).iterator();
 		Map<Pair, IItem> cache = new HashMap<>();
 		Set<ITransaction<IItem>> transactions = rows.stream().map(row -> {
 			Map<String, Integer> frequency = new HashMap<>();
-			return new Transaction<>(transactionIdIterator.nextInt(), Arrays.asList(row.split(" ")).stream().map(item -> {
+			return new Transaction<>(transactionIdIterator.nextInt(),
+					Arrays.asList(row.split(" ")).stream().map(item -> {
 				int order = frequency.getOrDefault(item, 0) + 1;
 				frequency.put(item, order);
-				
+
 				Pair key = Pair.of(item, order);
 				if (!cache.containsKey(key)) {
 					cache.put(key, new OrderedStringItem(itemIdIterator.nextInt(), item, order));
@@ -35,14 +37,15 @@ public class OrderedStringTransactionSetReader implements ITransactionSetReader<
 				return cache.get(key);
 			}).collect(Collectors.toList()));
 		}).collect(Collectors.toSet());
-		return new TransactionSet<>(cache.values().stream().collect(Collectors.toMap(IItem::getId, i -> i)), transactions);
+		return new TransactionSet<>(cache.values().stream().collect(Collectors.toMap(IItem::getId, i -> i)),
+				transactions);
 	}
-	
+
 	private static final class Pair {
 		private final String value;
-		
+
 		private final int order;
-		
+
 		private Pair(String value, int order) {
 			this.value = value;
 			this.order = order;
@@ -75,7 +78,7 @@ public class OrderedStringTransactionSetReader implements ITransactionSetReader<
 				return false;
 			return true;
 		}
-		
+
 		public static Pair of(String value, int order) {
 			return new Pair(value, order);
 		}

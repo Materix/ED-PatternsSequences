@@ -1,11 +1,11 @@
 package pl.edu.agh.ed.model;
 
 public class OrderedStringItem implements IItem {
-	
+
 	private final int id;
-	
+
 	private final String value;
-	
+
 	private final int order;
 
 	public OrderedStringItem(int id, String value, int order) {
@@ -22,14 +22,15 @@ public class OrderedStringItem implements IItem {
 	public String getValue() {
 		return value;
 	}
-	
+
 	public int getOrder() {
 		return order;
 	}
 
 	@Override
 	public String toString() {
-		return value + ":" + Integer.toString(order);
+		return Integer.toString(id);
+		// return value + ":" + Integer.toString(order);
 	}
 
 	@Override

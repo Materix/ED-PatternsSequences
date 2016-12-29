@@ -8,10 +8,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import ca.pfv.spmf.tools.MemoryLogger;
 import pl.edu.agh.ed.algorithm.IClosedFrequentSequencesExtractor;
-import pl.edu.agh.ed.algorithm.IFrequentSequencesExtractor;
 import pl.edu.agh.ed.algorithm.frequent.sequences.closed.spmf.bidePlus.BidePlusClosedFrequentSequenceExtractor;
 import pl.edu.agh.ed.algorithm.frequent.sequences.closed.spmf.clasp.ClaSPClosedFrequentSequenceExtractor;
 import pl.edu.agh.ed.algorithm.frequent.sequences.closed.spmf.clospan.CloSpanClosedFrequentSequenceExtractor;
@@ -62,15 +62,23 @@ public class ClosedFrequentSequenceBenchmark {
 		if (!Files.exists(outputMemoryDirPath)) {
 			Files.createDirectories(outputMemoryDirPath);
 		}
-		for (IFrequentSequencesExtractor extractor : extractors.values()) {
-			extractor.extract(inputDataSet, MAX_SUPPORT);
+		Path outputResultDirPath = Paths.get("output", "closedSequence", name, "result");
+		if (!Files.exists(outputResultDirPath)) {
+			Files.createDirectories(outputResultDirPath);
 		}
+		// for (IFrequentSequencesExtractor extractor : extractors.values()) {
+		// extractor.extract(inputDataSet, MAX_SUPPORT);
+		// }
 		for (int run = 0; run < parameters.getMaxRuns(); run++) {
 			System.out.println(run);
 			String fileName = "run-" + run + ".txt";
 			Path outputPath = outputTimeDirPath.resolve(fileName);
 			Path outputResultSizePath = outputResultSizeDirPath.resolve(fileName);
 			Path outputMemoryPath = outputMemoryDirPath.resolve(fileName);
+			Path outputResultPath = outputResultDirPath.resolve("run-" + run);
+			if (!Files.exists(outputResultPath)) {
+				Files.createDirectories(outputResultPath);
+			}
 			try (PrintStream outputTime = new PrintStream(Files.newOutputStream(outputPath, //
 					StandardOpenOption.CREATE, //
 					StandardOpenOption.TRUNCATE_EXISTING));
@@ -88,7 +96,7 @@ public class ClosedFrequentSequenceBenchmark {
 				for (double support = parameters.getMaxSupport(); support >= parameters
 						.getMinSupport(); support -= parameters.getSupportStep()) {
 					print(support, outputTime, outputResultSize, outputMemory);
-					for (IFrequentSequencesExtractor extractor : extractors.values()) {
+					for (Entry<String, IClosedFrequentSequencesExtractor> entry : extractors.entrySet()) {
 						System.runFinalization();
 						System.gc();
 						MemoryLogger.getInstance().reset();
@@ -96,13 +104,16 @@ public class ClosedFrequentSequenceBenchmark {
 						double startMemory = MemoryLogger.getInstance().getMaxMemory();
 						long start = System.currentTimeMillis();
 
-						IFrequentSequenceSet result = extractor.extract(inputDataSet, support);
-						MemoryLogger.getInstance().checkMemory();
+						IFrequentSequenceSet result = entry.getValue().extract(inputDataSet, support);
 
+						MemoryLogger.getInstance().checkMemory();
 						long stop = System.currentTimeMillis();
 						double stopMemory = MemoryLogger.getInstance().getMaxMemory();
-						print(SEPARATOR, outputTime, outputResultSize, outputMemory);
 
+						if (run == 0) {
+							BenchmarkUtils.writeResultToFile(result, outputResultPath.resolve(entry.getKey() + ".txt"));
+						}
+						print(SEPARATOR, outputTime, outputResultSize, outputMemory);
 						print(result.size(), outputResultSize);
 						print(stop - start, outputTime);
 						print(stopMemory - startMemory, outputMemory);

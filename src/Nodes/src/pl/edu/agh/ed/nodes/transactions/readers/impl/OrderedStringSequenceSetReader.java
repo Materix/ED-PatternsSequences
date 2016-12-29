@@ -23,9 +23,9 @@ public class OrderedStringSequenceSetReader implements ISequenceSetReader {
 
 	@Override
 	public ISequenceSet readSequenceSet(List<String> rows) {
-		OfInt groupIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
-		OfInt itemIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
-		OfInt sequenceIdIterator = IntStream.iterate(0, id -> id + 1).iterator();
+		OfInt groupIdIterator = IntStream.iterate(1, id -> id + 1).iterator();
+		OfInt itemIdIterator = IntStream.iterate(1, id -> id + 1).iterator();
+		OfInt sequenceIdIterator = IntStream.iterate(1, id -> id + 1).iterator();
 		Map<Pair, IItem> cache = new HashMap<>();
 		Set<ISequence> sequences = rows.stream().map(row -> {
 			return new Sequence(sequenceIdIterator.next(), Arrays.stream(row.split("; ")).map(group -> {
