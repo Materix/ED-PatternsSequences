@@ -18,7 +18,6 @@ import pl.edu.agh.ed.algorithm.frequent.patterns.spmf.hmine.HMineFrequentPattern
 import pl.edu.agh.ed.algorithm.frequent.patterns.spmf.lcmfreq.LCMFreqFrequentPatternsExtractor;
 import pl.edu.agh.ed.algorithm.frequent.patterns.spmf.prepost.PrePostFrequentPatternsExtractor;
 import pl.edu.agh.ed.algorithm.frequent.patterns.spmf.prepostplus.PrePostPlusFrequentPatternsExtractor;
-import pl.edu.agh.ed.algorithm.frequent.patterns.spmf.relim.RelimFrequentPatternsExtractor;
 import pl.edu.agh.ed.model.IItem;
 import pl.edu.agh.ed.model.transactions.ITransactionSet;
 import pl.edu.agh.ed.nodes.transactions.readers.impl.OrderedStringTransactionSetReader;
@@ -43,7 +42,8 @@ public class FrequentPatternKosarakBenchmark extends
 		extractors.put("PrePost", wrap(new PrePostFrequentPatternsExtractor<>()));
 		extractors.put("H-Mine", wrap(new HMineFrequentPatternsExtractor<>()));
 		extractors.put("LCMFreq", wrap(new LCMFreqFrequentPatternsExtractor<>()));
-		extractors.put("Relim", wrap(new RelimFrequentPatternsExtractor<>()));
+		// extractors.put("Relim", wrap(new
+		// RelimFrequentPatternsExtractor<>()));
 		extractors.put("Apriori", wrap(new AprioriFrequentPatternsExtractor<>()));
 
 		new FrequentPatternKosarakBenchmark( //
